@@ -1,4 +1,4 @@
-package com.davtyan.materialweather;
+package com.davtyan.materialweather.components.today_weather;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.davtyan.materialweather.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -2,6 +2,7 @@ package com.davtyan.materialweather;
 
 import android.widget.TextView;
 
+import com.davtyan.materialweather.components.today_weather.TodayWeatherFragment;
 import com.davtyan.materialweather.lib_test.FragmentTest2;
 
 import org.junit.Test;
