@@ -1,17 +1,13 @@
 package com.davtyan.materialweather.components.today_weather;
 
-import android.content.Context;
 import android.os.AsyncTask;
 
-import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.utils.Geocoding;
-import com.davtyan.materialweather.utils.WebClient;
+import com.davtyan.materialweather.weather_providers.darksky.DarkSkyWeatherProvider;
 
 public class TodayWeatherModel implements TodayWeatherMvp.Model {
-    private final WebClient webClient;
-    private final TodayWeatherUrl url;
-    private final Geocoding geocoding;
     private final String location;
+    private final DarkSkyWeatherProvider darkSkyWeatherProvider;
 
     private Geocoding.Coordinates coordinates;
     private String weatherDataJsonString;
@@ -26,10 +22,7 @@ public class TodayWeatherModel implements TodayWeatherMvp.Model {
 
         @Override
         protected TodayWeatherData doInBackground(Void... params) {
-            coordinates = geocoding.getCoordinatesFromLocation(location);
-            String urlString = url.build(coordinates.getLatitude(), coordinates.getLongitude());
-            weatherDataJsonString = webClient.getString(urlString);
-            return new TodayWeatherData(weatherDataJsonString);
+            return new TodayWeatherData(darkSkyWeatherProvider.getForecastForToday(location));
         }
 
         @Override
@@ -38,15 +31,9 @@ public class TodayWeatherModel implements TodayWeatherMvp.Model {
         }
     }
 
-    public TodayWeatherModel(
-            Context context,
-            WebClient webClient,
-            Geocoding geocoding,
-            String location) {
-        this.webClient = webClient;
-        this.geocoding = geocoding;
+    public TodayWeatherModel(DarkSkyWeatherProvider darkSkyWeatherProvider, String location) {
+        this.darkSkyWeatherProvider = darkSkyWeatherProvider;
         this.location = location;
-        this.url = new TodayWeatherUrl(context.getString(R.string.apikey_darksky));
     }
 
     @Override

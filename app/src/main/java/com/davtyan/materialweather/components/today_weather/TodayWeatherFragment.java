@@ -9,9 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
-import com.davtyan.materialweather.utils.Geocoding;
-import com.davtyan.materialweather.utils.WebClient;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,10 +32,10 @@ public class TodayWeatherFragment extends Fragment implements TodayWeatherMvp.Vi
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WebClient webClient = new WebClient();
-        Geocoding geocoding = new Geocoding(getContext());
-        TodayWeatherMvp.Model model = new TodayWeatherModel(getContext(), webClient, geocoding, "Kyiv");
-        presenter = new TodayWeatherPresenter(this, model);
+
+        App app = (App) getContext().getApplicationContext();
+        TodayWeatherFactory factory = app.getTodayWeatherFactory(getContext(), this, "Kyiv");
+        presenter = factory.getPresenter();
     }
 
     @Nullable
