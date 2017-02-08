@@ -1,22 +1,26 @@
-package com.davtyan.materialweather;
+package com.davtyan.materialweather.components.today_weather;
 
+import android.annotation.SuppressLint;
 import android.widget.TextView;
 
-import com.davtyan.materialweather.components.today_weather.TodayWeatherFragment;
+import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.lib_test.FragmentTest2;
 
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@SuppressLint("StaticFieldLeak")
 public class TodayWeatherFragmentTest extends FragmentTest2 {
     private static TodayWeatherFragment fragment;
 
     @Override
     public void beforeEach() {
         super.beforeEach();
-        fragment = new TodayWeatherFragment();
-        initFragment(fragment);
+        if (fragment == null) {
+            fragment = new TodayWeatherFragment();
+            initFragment(fragment);
+        }
     }
 
     @Test
