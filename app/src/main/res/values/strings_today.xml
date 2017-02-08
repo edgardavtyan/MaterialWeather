@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="today.title">Today</string>
+    <string name="today.pattern.temps">%1$.0f ~ %2$.0f</string>
+    <string name="today.pattern.wind">%1$.1f m/s</string>
+    <string name="today.pattern.rain">%1$d %%</string>
+
+</resources>
