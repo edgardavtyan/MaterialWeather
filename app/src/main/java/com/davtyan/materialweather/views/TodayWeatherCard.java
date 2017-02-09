@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -67,11 +66,5 @@ public class TodayWeatherCard extends CardView {
     private void init() {
         LayoutInflater.from(getContext()).inflate(R.layout.card_today, this, true);
         ButterKnife.bind(this);
-
-        CardView.LayoutParams layoutParams = new CardView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.setMargins(spaceSmall, spaceSmall, spaceSmall, spaceSmall);
-        setLayoutParams(layoutParams);
     }
 }

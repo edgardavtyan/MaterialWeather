@@ -16,6 +16,7 @@ public class TodayWeatherData {
     private double highTemp;
     private int precipitationChance;
     private String description;
+    private String condition;
 
     public TodayWeatherData(String jsonString) {
         try {
@@ -25,6 +26,7 @@ public class TodayWeatherData {
             windSpeed = currentWeather.getDouble("windSpeed");
             precipitationChance = (int) (currentWeather.getDouble("precipProbability") * 100);
             currentTemp = currentWeather.getDouble("temperature");
+            condition = currentWeather.getString("summary");
 
             JSONObject dailyFirstDay = root
                     .getJSONObject("daily")

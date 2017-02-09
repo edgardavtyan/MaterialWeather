@@ -9,6 +9,8 @@ public interface MainMvp {
 
     interface View {
         TodayWeatherCard getTodayWeatherView();
+        void setCurrentTemp(double temp);
+        void setCurrentCondition(String condition);
     }
 
     interface Presenter {
