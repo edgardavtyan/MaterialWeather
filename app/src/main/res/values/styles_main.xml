@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text_Contrast">
+        <item name="android:textColor">@color/textColorContrastPrimary</item>
+        <item name="android:shadowColor">@color/textColorPrimary</item>
+        <item name="android:shadowRadius">4</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+    </style>
+
+    <style name="Text_Contrast.Light">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="Text_Contrast.Thin">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+</resources>

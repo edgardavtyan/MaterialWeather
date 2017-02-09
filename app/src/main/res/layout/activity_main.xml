@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_wrapper"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,9 +14,9 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         app:elevation="0dp"
-        android:layout_marginTop="20dp"
         >
 
         <android.support.v7.widget.Toolbar
@@ -33,14 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_normal"
-        android:fontFamily="sans-serif-thin"
-        android:textColor="@color/textColorContrastPrimary"
         android:textSize="80sp"
-        android:shadowColor="@color/textColorPrimary"
-        android:shadowRadius="4"
-        android:shadowDx="1"
-        android:shadowDy="1"
         tools:text="21°"
+        style="@style/Text_Contrast.Thin"
         />
 
     <TextView
@@ -48,14 +43,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_normal"
-        android:fontFamily="sans-serif-light"
         android:text="Kyiv, Ukraine"
-        android:textColor="@color/textColorContrastPrimary"
         android:textSize="24sp"
-        android:shadowColor="@color/textColorPrimary"
-        android:shadowRadius="4"
-        android:shadowDx="1"
-        android:shadowDy="1"
+        style="@style/Text_Contrast.Light"
         />
 
     <TextView
@@ -64,13 +54,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_normal"
         android:layout_marginLeft="@dimen/space_normal"
-        android:textColor="@color/textColorContrastPrimary"
         android:textSize="22sp"
-        android:shadowColor="@color/textColorPrimary"
-        android:shadowRadius="4"
-        android:shadowDx="1"
-        android:shadowDy="1"
         tools:text="Partly cloudy"
+        style="@style/Text_Contrast"
         />
 
     <com.davtyan.materialweather.views.TodayWeatherCard
