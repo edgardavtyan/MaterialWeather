@@ -36,6 +36,10 @@
         android:fontFamily="sans-serif-thin"
         android:textColor="@color/textColorContrastPrimary"
         android:textSize="80sp"
+        android:shadowColor="@color/textColorPrimary"
+        android:shadowRadius="4"
+        android:shadowDx="1"
+        android:shadowDy="1"
         tools:text="21°"
         />
 
@@ -48,6 +52,10 @@
         android:text="Kyiv, Ukraine"
         android:textColor="@color/textColorContrastPrimary"
         android:textSize="24sp"
+        android:shadowColor="@color/textColorPrimary"
+        android:shadowRadius="4"
+        android:shadowDx="1"
+        android:shadowDy="1"
         />
 
     <TextView
@@ -58,6 +66,10 @@
         android:layout_marginLeft="@dimen/space_normal"
         android:textColor="@color/textColorContrastPrimary"
         android:textSize="22sp"
+        android:shadowColor="@color/textColorPrimary"
+        android:shadowRadius="4"
+        android:shadowDx="1"
+        android:shadowDy="1"
         tools:text="Partly cloudy"
         />
 
