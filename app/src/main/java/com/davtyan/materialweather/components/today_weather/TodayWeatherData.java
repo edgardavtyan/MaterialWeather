@@ -1,5 +1,7 @@
 package com.davtyan.materialweather.components.today_weather;
 
+import android.location.Address;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,8 +19,9 @@ public class TodayWeatherData {
     private int precipitationChance;
     private String description;
     private String condition;
+    private String location;
 
-    public TodayWeatherData(String jsonString) {
+    public TodayWeatherData(String jsonString, Address address) {
         try {
             JSONObject root = new JSONObject(jsonString);
             JSONObject currentWeather = root.getJSONObject("currently");
@@ -27,6 +30,7 @@ public class TodayWeatherData {
             precipitationChance = (int) (currentWeather.getDouble("precipProbability") * 100);
             currentTemp = currentWeather.getDouble("temperature");
             condition = currentWeather.getString("summary");
+            location = String.format("%s, %s", address.getCountryName(), address.getAdminArea());
 
             JSONObject dailyFirstDay = root
                     .getJSONObject("daily")

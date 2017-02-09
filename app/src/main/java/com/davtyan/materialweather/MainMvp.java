@@ -11,6 +11,7 @@ public interface MainMvp {
         TodayWeatherCard getTodayWeatherView();
         void setCurrentTemp(double temp);
         void setCurrentCondition(String condition);
+        void setLocation(String location);
     }
 
     interface Presenter {

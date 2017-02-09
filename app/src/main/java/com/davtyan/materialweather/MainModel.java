@@ -1,16 +1,16 @@
 package com.davtyan.materialweather;
 
+import android.location.Address;
 import android.os.AsyncTask;
 
 import com.davtyan.materialweather.components.today_weather.TodayWeatherData;
-import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.weather_providers.darksky.DarkSkyWeatherProvider;
 
 public class MainModel implements MainMvp.Model {
     private final String location;
     private final DarkSkyWeatherProvider darkSkyWeatherProvider;
 
-    private Geocoding.Coordinates coordinates;
+    private Address address;
     private String weatherDataJsonString;
 
     private class TodayWeatherTask extends AsyncTask<Void, Void, TodayWeatherData> {
@@ -23,7 +23,9 @@ public class MainModel implements MainMvp.Model {
 
         @Override
         protected TodayWeatherData doInBackground(Void... params) {
-            return new TodayWeatherData(darkSkyWeatherProvider.getForecastForToday(location));
+            return new TodayWeatherData(
+                    darkSkyWeatherProvider.getForecastForToday(location),
+                    darkSkyWeatherProvider.getFullLocation(location));
         }
 
         @Override

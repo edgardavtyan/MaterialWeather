@@ -1,6 +1,7 @@
 package com.davtyan.materialweather.weather_providers.darksky;
 
-import com.davtyan.materialweather.components.today_weather.TodayWeatherData;
+import android.location.Address;
+
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
 
@@ -16,8 +17,12 @@ public class DarkSkyWeatherProvider {
     }
 
     public String getForecastForToday(String location) {
-        Geocoding.Coordinates coordinates = geocoding.getCoordinatesFromLocation(location);
-        return webClient.getString(getUrl(coordinates.getLatitude(), coordinates.getLongitude()));
+        Address address = geocoding.getAddressFromLocation(location);
+        return webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
+    }
+
+    public Address getFullLocation(String location) {
+        return geocoding.getAddressFromLocation(location);
     }
 
     private String getUrl(double latitude, double longitude) {

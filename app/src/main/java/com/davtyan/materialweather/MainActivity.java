@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
+    @BindView(R.id.location) TextView locationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,5 +38,10 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void setCurrentCondition(String condition) {
         currentConditionView.setText(condition);
+    }
+
+    @Override
+    public void setLocation(String location) {
+        locationView.setText(location);
     }
 }
