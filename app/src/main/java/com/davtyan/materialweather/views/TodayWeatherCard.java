@@ -24,7 +24,6 @@ public class TodayWeatherCard extends CardView {
     @BindView(R.id.date) TextView dateView;
     @BindView(R.id.weather_icon) ImageView weatherIconView;
     @BindView(R.id.temps) TextView tempsView;
-    @BindView(R.id.temp_current) TextView currentTempView;
     @BindView(R.id.wind_speed) TextView windSpeedView;
     @BindView(R.id.rain) TextView rainView;
     @BindView(R.id.description) TextView descriptionView;
@@ -51,10 +50,6 @@ public class TodayWeatherCard extends CardView {
 
     public void setTemps(double lowTemp, double highTemp) {
         tempsView.setText(getContext().getString(R.string.today_pattern_temps, lowTemp, highTemp));
-    }
-
-    public void setCurrentTemp(double currentTemp) {
-        currentTempView.setText(getContext().getString(R.string.today_pattern_current_temp, currentTemp));
     }
 
     public void setWindSpeed(double windSpeed) {

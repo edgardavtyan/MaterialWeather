@@ -20,7 +20,6 @@ public class MainPresenter implements MainMvp.Presenter {
             todayWeatherView.setTemps(todayWeatherData.getLowTemp(), todayWeatherData.getHighTemp());
             todayWeatherView.setPrecipitationChance(todayWeatherData.getPrecipitationChance());
             todayWeatherView.setDescription(todayWeatherData.getDescription());
-            todayWeatherView.setCurrentTemp(todayWeatherData.getCurrentTemp());
         });
     }
 }

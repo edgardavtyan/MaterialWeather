@@ -60,24 +60,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_tiny"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/space_tiny"
                     >
-
-                    <TextView
-                        android:id="@+id/temp_current"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="24sp"
-                        android:textColor="@color/textColorPrimary"
-                        tools:text="-11°"
-                        />
-
-                    <Space
-                        android:layout_width="@dimen/space_tiny"
-                        android:layout_height="wrap_content"
-                        />
 
                     <ImageView
                         android:id="@+id/weather_icon"
