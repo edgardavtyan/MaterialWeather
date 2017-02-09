@@ -4,7 +4,7 @@ import android.location.Address;
 import android.os.AsyncTask;
 
 import com.davtyan.materialweather.components.today_weather.TodayWeatherData;
-import com.davtyan.materialweather.weather_providers.darksky.DarkSkyWeatherProvider;
+import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
 
 public class MainModel implements MainMvp.Model {
     private final String location;

@@ -2,13 +2,9 @@ package com.davtyan.materialweather;
 
 import android.content.Context;
 
-import com.davtyan.materialweather.R;
-import com.davtyan.materialweather.MainModel;
-import com.davtyan.materialweather.MainMvp;
-import com.davtyan.materialweather.MainPresenter;
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
-import com.davtyan.materialweather.weather_providers.darksky.DarkSkyWeatherProvider;
+import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
 
 public class MainFactory {
     private final Context context;

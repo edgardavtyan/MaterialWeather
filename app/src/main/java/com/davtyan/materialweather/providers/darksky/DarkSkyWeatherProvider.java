@@ -1,4 +1,4 @@
-package com.davtyan.materialweather.weather_providers.darksky;
+package com.davtyan.materialweather.providers.darksky;
 
 import android.location.Address;
 
