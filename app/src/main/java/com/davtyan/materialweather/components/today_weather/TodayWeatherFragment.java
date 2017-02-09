@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.MainMvp;
+import com.davtyan.materialweather.MainFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,7 +21,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TodayWeatherFragment extends Fragment implements TodayWeatherMvp.View {
+public class TodayWeatherFragment extends Fragment implements MainMvp.View {
     @BindView(R.id.date) TextView dateView;
     @BindView(R.id.weather_icon) ImageView weatherIconView;
     @BindView(R.id.temps) TextView tempsView;
@@ -28,14 +30,14 @@ public class TodayWeatherFragment extends Fragment implements TodayWeatherMvp.Vi
     @BindView(R.id.rain) TextView rainView;
     @BindView(R.id.description) TextView descriptionView;
 
-    private TodayWeatherMvp.Presenter presenter;
+    private MainMvp.Presenter presenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         App app = (App) getContext().getApplicationContext();
-        TodayWeatherFactory factory = app.getTodayWeatherFactory(getContext(), this, "Kyiv");
+        MainFactory factory = app.getTodayWeatherFactory(getContext(), this, "Kyiv");
         presenter = factory.getPresenter();
     }
 

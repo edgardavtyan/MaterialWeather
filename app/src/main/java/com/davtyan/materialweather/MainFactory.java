@@ -1,39 +1,42 @@
-package com.davtyan.materialweather.components.today_weather;
+package com.davtyan.materialweather;
 
 import android.content.Context;
 
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.MainModel;
+import com.davtyan.materialweather.MainMvp;
+import com.davtyan.materialweather.MainPresenter;
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
 import com.davtyan.materialweather.weather_providers.darksky.DarkSkyWeatherProvider;
 
-public class TodayWeatherFactory {
+public class MainFactory {
     private final Context context;
-    private final TodayWeatherMvp.View view;
+    private final MainMvp.View view;
     private final String location;
     private final String apiKey;
     private WebClient webClient;
     private Geocoding geocoding;
-    private TodayWeatherMvp.Model model;
-    private TodayWeatherMvp.Presenter presenter;
+    private MainMvp.Model model;
+    private MainMvp.Presenter presenter;
     private DarkSkyWeatherProvider darkSkyWeatherProvider;
 
-    public TodayWeatherFactory(Context context, TodayWeatherMvp.View view, String location) {
+    public MainFactory(Context context, MainMvp.View view, String location) {
         this.context = context;
         this.view = view;
         this.location = location;
         this.apiKey = context.getString(R.string.apikey_darksky);
     }
 
-    public TodayWeatherMvp.Model getModel() {
+    public MainMvp.Model getModel() {
         if (model == null)
-            model = new TodayWeatherModel(getDarkSkyWeatherProvider(), location);
+            model = new MainModel(getDarkSkyWeatherProvider(), location);
         return model;
     }
 
-    public TodayWeatherMvp.Presenter getPresenter() {
+    public MainMvp.Presenter getPresenter() {
         if (presenter == null)
-            presenter = new TodayWeatherPresenter(view, getModel());
+            presenter = new MainPresenter(view, getModel());
         return presenter;
     }
 

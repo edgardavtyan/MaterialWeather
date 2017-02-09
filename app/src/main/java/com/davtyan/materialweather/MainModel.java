@@ -1,11 +1,12 @@
-package com.davtyan.materialweather.components.today_weather;
+package com.davtyan.materialweather;
 
 import android.os.AsyncTask;
 
+import com.davtyan.materialweather.components.today_weather.TodayWeatherData;
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.weather_providers.darksky.DarkSkyWeatherProvider;
 
-public class TodayWeatherModel implements TodayWeatherMvp.Model {
+public class MainModel implements MainMvp.Model {
     private final String location;
     private final DarkSkyWeatherProvider darkSkyWeatherProvider;
 
@@ -31,7 +32,7 @@ public class TodayWeatherModel implements TodayWeatherMvp.Model {
         }
     }
 
-    public TodayWeatherModel(DarkSkyWeatherProvider darkSkyWeatherProvider, String location) {
+    public MainModel(DarkSkyWeatherProvider darkSkyWeatherProvider, String location) {
         this.darkSkyWeatherProvider = darkSkyWeatherProvider;
         this.location = location;
     }
