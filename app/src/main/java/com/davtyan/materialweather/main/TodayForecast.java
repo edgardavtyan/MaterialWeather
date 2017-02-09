@@ -19,6 +19,7 @@ public class TodayForecast {
     private int precipitationChance;
     private String description;
     private String condition;
+    private String icon;
     private String location;
 
     public TodayForecast(String jsonString, Address address) {
@@ -30,6 +31,7 @@ public class TodayForecast {
             precipitationChance = (int) (currentWeather.getDouble("precipProbability") * 100);
             currentTemp = currentWeather.getDouble("temperature");
             condition = currentWeather.getString("summary");
+            icon = currentWeather.getString("icon");
             location = String.format("%s, %s", address.getCountryName(), address.getAdminArea());
 
             JSONObject dailyFirstDay = root

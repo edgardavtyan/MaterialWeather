@@ -15,7 +15,7 @@ public class MainPresenter implements MainMvp.Presenter {
     public void onCreate() {
         model.getTodayWeather(todayWeatherData -> {
             view.setCurrentTemp(todayWeatherData.getCurrentTemp());
-            view.setCurrentCondition(todayWeatherData.getCondition());
+            view.setCurrentCondition(todayWeatherData.getCondition(), todayWeatherData.getIcon());
             view.setLocation(todayWeatherData.getLocation());
 
             TodayWeatherCard todayWeatherView = view.getTodayWeatherView();

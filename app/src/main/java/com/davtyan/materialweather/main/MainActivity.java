@@ -2,10 +2,12 @@ package com.davtyan.materialweather.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.providers.darksky.DrawableFromCondition;
 import com.davtyan.materialweather.views.TodayWeatherCard;
 
 import butterknife.BindView;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @BindView(R.id.today_weather) @Getter TodayWeatherCard todayWeatherView;
 
+    @BindView(R.id.main_wrapper) LinearLayout mainWrapper;
     @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
     @BindView(R.id.location) TextView locationView;
@@ -38,8 +41,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     }
 
     @Override
-    public void setCurrentCondition(String condition) {
+    public void setCurrentCondition(String condition, String icon) {
         currentConditionView.setText(condition);
+        mainWrapper.setBackgroundResource(DrawableFromCondition.get(icon));
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface MainMvp {
     interface View {
         TodayWeatherCard getTodayWeatherView();
         void setCurrentTemp(double temp);
-        void setCurrentCondition(String condition);
+        void setCurrentCondition(String condition, String icon);
         void setLocation(String location);
     }
 
