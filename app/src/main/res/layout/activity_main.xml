@@ -63,7 +63,7 @@
 
     <com.davtyan.materialweather.views.TodayWeatherCard
         android:id="@+id/today_weather"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
