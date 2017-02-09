@@ -3,7 +3,6 @@ package com.davtyan.materialweather;
 import android.location.Address;
 import android.os.AsyncTask;
 
-import com.davtyan.materialweather.components.today_weather.TodayWeatherData;
 import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
 
 public class MainModel implements MainMvp.Model {
@@ -13,7 +12,7 @@ public class MainModel implements MainMvp.Model {
     private Address address;
     private String weatherDataJsonString;
 
-    private class TodayWeatherTask extends AsyncTask<Void, Void, TodayWeatherData> {
+    private class TodayWeatherTask extends AsyncTask<Void, Void, TodayForecast> {
 
         private final Callback callback;
 
@@ -22,15 +21,15 @@ public class MainModel implements MainMvp.Model {
         }
 
         @Override
-        protected TodayWeatherData doInBackground(Void... params) {
-            return new TodayWeatherData(
+        protected TodayForecast doInBackground(Void... params) {
+            return new TodayForecast(
                     darkSkyWeatherProvider.getForecastForToday(location),
                     darkSkyWeatherProvider.getFullLocation(location));
         }
 
         @Override
-        protected void onPostExecute(TodayWeatherData todayWeatherData) {
-            callback.onWeatherLoaded(todayWeatherData);
+        protected void onPostExecute(TodayForecast todayForecast) {
+            callback.onWeatherLoaded(todayForecast);
         }
     }
 
@@ -45,6 +44,6 @@ public class MainModel implements MainMvp.Model {
     }
 
     public interface Callback {
-        void onWeatherLoaded(TodayWeatherData weatherData);
+        void onWeatherLoaded(TodayForecast weatherData);
     }
 }

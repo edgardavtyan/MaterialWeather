@@ -1,4 +1,4 @@
-package com.davtyan.materialweather.components.today_weather;
+package com.davtyan.materialweather;
 
 import android.location.Address;
 
@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TodayWeatherData {
+public class TodayForecast {
     private double windSpeed;
     private long date;
     private double currentTemp;
@@ -21,7 +21,7 @@ public class TodayWeatherData {
     private String condition;
     private String location;
 
-    public TodayWeatherData(String jsonString, Address address) {
+    public TodayForecast(String jsonString, Address address) {
         try {
             JSONObject root = new JSONObject(jsonString);
             JSONObject currentWeather = root.getJSONObject("currently");
