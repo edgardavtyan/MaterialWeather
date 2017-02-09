@@ -11,6 +11,7 @@ public interface TodayWeatherMvp {
         void setWindSpeed(double windSpeed);
         void setPrecipitationChance(int chance);
         void setDescription(String description);
+        void setCurrentTemp(double currentTemp);
     }
 
     interface Presenter {

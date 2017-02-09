@@ -17,6 +17,7 @@ public class TodayWeatherPresenter implements TodayWeatherMvp.Presenter {
             view.setTemps(todayWeatherData.getLowTemp(), todayWeatherData.getHighTemp());
             view.setPrecipitationChance(todayWeatherData.getPrecipitationChance());
             view.setDescription(todayWeatherData.getDescription());
+            view.setCurrentTemp(todayWeatherData.getCurrentTemp());
         });
     }
 }

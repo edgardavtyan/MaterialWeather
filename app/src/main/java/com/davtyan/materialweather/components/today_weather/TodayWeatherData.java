@@ -11,6 +11,7 @@ import lombok.Setter;
 public class TodayWeatherData {
     private double windSpeed;
     private long date;
+    private double currentTemp;
     private double lowTemp;
     private double highTemp;
     private int precipitationChance;
@@ -23,6 +24,7 @@ public class TodayWeatherData {
             date = currentWeather.getLong("time");
             windSpeed = currentWeather.getDouble("windSpeed");
             precipitationChance = (int) (currentWeather.getDouble("precipProbability") * 100);
+            currentTemp = currentWeather.getDouble("temperature");
 
             JSONObject dailyFirstDay = root
                     .getJSONObject("daily")

@@ -23,6 +23,7 @@ public class TodayWeatherFragment extends Fragment implements TodayWeatherMvp.Vi
     @BindView(R.id.date) TextView dateView;
     @BindView(R.id.weather_icon) ImageView weatherIconView;
     @BindView(R.id.temps) TextView tempsView;
+    @BindView(R.id.temp_current) TextView currentTempView;
     @BindView(R.id.wind_speed) TextView windSpeedView;
     @BindView(R.id.rain) TextView rainView;
     @BindView(R.id.description) TextView descriptionView;
@@ -64,6 +65,11 @@ public class TodayWeatherFragment extends Fragment implements TodayWeatherMvp.Vi
     @Override
     public void setTemps(double lowTemp, double highTemp) {
         tempsView.setText(getString(R.string.today_pattern_temps, lowTemp, highTemp));
+    }
+
+    @Override
+    public void setCurrentTemp(double currentTemp) {
+        currentTempView.setText(getString(R.string.today_pattern_current_temp, currentTemp));
     }
 
     @Override

@@ -49,21 +49,43 @@
             >
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:baselineAligned="false"
                 android:gravity="center"
                 android:orientation="vertical"
                 >
 
-                <ImageView
-                    android:id="@+id/weather_icon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:layout_marginBottom="@dimen/space_tiny"
-                    android:src="@drawable/ic_sun"
-                    />
+                    >
+
+                    <TextView
+                        android:id="@+id/temp_current"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:textColor="@color/textColorPrimary"
+                        tools:text="-11°"
+                        />
+
+                    <Space
+                        android:layout_width="@dimen/space_tiny"
+                        android:layout_height="wrap_content"
+                        />
+
+                    <ImageView
+                        android:id="@+id/weather_icon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_sun"
+                        />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/temps"
@@ -71,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/textColorPrimary"
                     android:textSize="20sp"
-                    tools:text="17~22 °C"
+                    tools:text="17° ~ 22°"
                     />
 
             </LinearLayout>
@@ -87,7 +109,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="6"
                 android:orientation="vertical"
                 >
 
