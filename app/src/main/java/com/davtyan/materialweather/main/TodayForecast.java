@@ -26,7 +26,7 @@ public class TodayForecast {
         try {
             JSONObject root = new JSONObject(jsonString);
             JSONObject currentWeather = root.getJSONObject("currently");
-            date = currentWeather.getLong("time");
+            date = currentWeather.getLong("time") * 1000;
             windSpeed = currentWeather.getDouble("windSpeed");
             precipitationChance = (int) (currentWeather.getDouble("precipProbability") * 100);
             currentTemp = currentWeather.getDouble("temperature");
