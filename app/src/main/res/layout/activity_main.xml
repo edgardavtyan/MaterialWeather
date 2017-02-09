@@ -43,8 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_normal"
-        android:text="Kyiv, Ukraine"
         android:textSize="24sp"
+        tools:text="Ukraine, Kyiv City"
         style="@style/Text_Contrast.Light"
         />
 
