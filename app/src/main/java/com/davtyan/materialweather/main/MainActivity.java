@@ -1,9 +1,11 @@
-package com.davtyan.materialweather;
+package com.davtyan.materialweather.main;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.davtyan.materialweather.App;
+import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.views.TodayWeatherCard;
 
 import butterknife.BindView;

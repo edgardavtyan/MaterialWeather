@@ -1,4 +1,4 @@
-package com.davtyan.materialweather;
+package com.davtyan.materialweather.main;
 
 import android.location.Address;
 

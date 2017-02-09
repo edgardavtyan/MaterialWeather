@@ -1,7 +1,8 @@
-package com.davtyan.materialweather;
+package com.davtyan.materialweather.main;
 
 import android.content.Context;
 
+import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
 import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
