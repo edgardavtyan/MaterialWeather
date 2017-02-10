@@ -17,6 +17,4 @@
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
-    <style name="Toolbar_Title" parent="Text_Contrast" />
-
 </resources>

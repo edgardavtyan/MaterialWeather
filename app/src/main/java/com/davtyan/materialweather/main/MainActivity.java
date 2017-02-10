@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         presenter.onCreate();
 
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextAppearance(this, R.style.Toolbar_Title);
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(
