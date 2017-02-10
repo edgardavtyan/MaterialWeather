@@ -6,21 +6,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class TodayForecast {
-    private double windSpeed;
-    private long date;
-    private double currentTemp;
-    private double lowTemp;
-    private double highTemp;
-    private int precipitationChance;
-    private String description;
-    private String condition;
-    private String icon;
-    private String location;
+    private final double windSpeed;
+    private final long date;
+    private final double currentTemp;
+    private final double lowTemp;
+    private final double highTemp;
+    private final int precipitationChance;
+    private final String description;
+    private final String condition;
+    private final String icon;
+    private final String location;
 
     public TodayForecast(String jsonString, Address address) {
         try {
