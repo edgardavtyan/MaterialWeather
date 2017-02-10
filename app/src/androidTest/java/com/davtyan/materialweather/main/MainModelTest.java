@@ -25,37 +25,32 @@ public class MainModelTest extends BaseTest {
 
     @Test
     public void getTodayWeather_getForecastFromCache() {
-        TodayForecast forecast = mock(TodayForecast.class);
-        when(weatherProvider.getForecastFromCache(LOCATION)).thenReturn(forecast);
-        when(weatherProvider.isCachedForecastAvailable()).thenReturn(true);
-
+        TodayForecast forecast = createMocKForecastWithCacheEnabled(true);
         TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
         model.getTodayWeather(callback);
-
         verify(callback).onWeatherLoaded(forecast);
     }
 
     @Test
     public void getTodayWeather_getForecastFromProvider() {
-        TodayForecast forecast = mock(TodayForecast.class);
-        when(weatherProvider.getForecastForToday(LOCATION)).thenReturn(forecast);
-        when(weatherProvider.isCachedForecastAvailable()).thenReturn(false);
-
+        TodayForecast forecast = createMocKForecastWithCacheEnabled(false);
         TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
         model.getTodayWeather(callback);
-
         verify(callback, timeout(1000)).onWeatherLoaded(forecast);
     }
 
     @Test
     public void forceRefresh_getForecastFromProvider() {
+        TodayForecast forecast = createMocKForecastWithCacheEnabled(false);
+        TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
+        model.forceRefresh(callback);
+        verify(callback, timeout(1000)).onWeatherLoaded(forecast);
+    }
+
+    private TodayForecast createMocKForecastWithCacheEnabled(boolean enabled) {
         TodayForecast forecast = mock(TodayForecast.class);
         when(weatherProvider.getForecastForToday(LOCATION)).thenReturn(forecast);
         when(weatherProvider.isCachedForecastAvailable()).thenReturn(false);
-
-        TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
-        model.forceRefresh(callback);
-
-        verify(callback, timeout(1000)).onWeatherLoaded(forecast);
+        return forecast;
     }
 }

@@ -4,6 +4,7 @@ import com.davtyan.materialweather.lib_test.BaseTest;
 import com.davtyan.materialweather.views.TodayWeatherCard;
 
 import org.junit.Test;
+import org.mockito.invocation.InvocationOnMock;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
@@ -16,6 +17,7 @@ public class MainPresenterTest extends BaseTest {
     private MainMvp.View view;
     private MainMvp.Model model;
     private MainMvp.Presenter presenter;
+    private TodayForecast forecast;
 
     @Override
     public void beforeEach() {
@@ -25,30 +27,36 @@ public class MainPresenterTest extends BaseTest {
         when(view.getTodayWeatherView()).thenReturn(todayWeatherCard);
         model = mock(MainMvp.Model.class);
         presenter = new MainPresenter(view, model);
+
+        forecast = mock(TodayForecast.class);
+        when(forecast.getWindSpeed()).thenReturn(1.1);
+        when(forecast.getDate()).thenReturn(2l);
+        when(forecast.getCurrentTemp()).thenReturn(3.3);
+        when(forecast.getLowTemp()).thenReturn(4.4);
+        when(forecast.getHighTemp()).thenReturn(5.5);
+        when(forecast.getPrecipitationChance()).thenReturn(6);
+        when(forecast.getCondition()).thenReturn("condition");
+        when(forecast.getDescription()).thenReturn("description");
+        when(forecast.getIcon()).thenReturn("icon");
+        when(forecast.getLocation()).thenReturn("location");
     }
 
     @Test
     public void onCreate_setViewValuesFromForecast() {
-        TodayForecast forecast = mock(TodayForecast.class);
-        when(forecast.getWindSpeed()).thenReturn(1.1);
-        when(forecast.getDate()).thenReturn(2l);
-        when(forecast.getCurrentTemp()).thenReturn(3.3);
-        when(forecast.getLowTemp()).thenReturn(4.4);
-        when(forecast.getHighTemp()).thenReturn(5.5);
-        when(forecast.getPrecipitationChance()).thenReturn(6);
-        when(forecast.getCondition()).thenReturn("condition");
-        when(forecast.getDescription()).thenReturn("description");
-        when(forecast.getIcon()).thenReturn("icon");
-        when(forecast.getLocation()).thenReturn("location");
-
-        doAnswer(invocation -> {
-            TodayWeatherTask.Callback callback = (TodayWeatherTask.Callback) invocation.getArguments()[0];
-            callback.onWeatherLoaded(forecast);
-            return null;
-        }).when(model).getTodayWeather(any());
-
+        doAnswer(this::callModelCallbackWithForecast).when(model).getTodayWeather(any());
         presenter.onCreate();
+        verifyViewUpdated();
+    }
 
+    @Test
+    public void onRefresh_updateWeather() {
+        doAnswer(this::callModelCallbackWithForecast).when(model).forceRefresh(any());
+        presenter.onRefresh();
+        verify(model).forceRefresh(any());
+        verifyViewUpdated();
+    }
+
+    private void verifyViewUpdated() {
         verify(view).setCurrentTemp(3.3);
         verify(view).setCurrentCondition("condition", "icon");
         verify(view).setLocation("location");
@@ -59,36 +67,9 @@ public class MainPresenterTest extends BaseTest {
         verify(todayWeatherCard).setDescription("description");
     }
 
-    @Test
-    public void onRefresh_updateWeather() {
-        TodayForecast forecast = mock(TodayForecast.class);
-        when(forecast.getWindSpeed()).thenReturn(1.1);
-        when(forecast.getDate()).thenReturn(2l);
-        when(forecast.getCurrentTemp()).thenReturn(3.3);
-        when(forecast.getLowTemp()).thenReturn(4.4);
-        when(forecast.getHighTemp()).thenReturn(5.5);
-        when(forecast.getPrecipitationChance()).thenReturn(6);
-        when(forecast.getCondition()).thenReturn("condition");
-        when(forecast.getDescription()).thenReturn("description");
-        when(forecast.getIcon()).thenReturn("icon");
-        when(forecast.getLocation()).thenReturn("location");
-
-        doAnswer(invocation -> {
-            TodayWeatherTask.Callback callback = (TodayWeatherTask.Callback) invocation.getArguments()[0];
-            callback.onWeatherLoaded(forecast);
-            return null;
-        }).when(model).forceRefresh(any());
-
-        presenter.onRefresh();
-
-        verify(model).forceRefresh(any());
-        verify(view).setCurrentTemp(3.3);
-        verify(view).setCurrentCondition("condition", "icon");
-        verify(view).setLocation("location");
-        verify(todayWeatherCard).setWindSpeed(1.1);
-        verify(todayWeatherCard).setDate(2l);
-        verify(todayWeatherCard).setTemps(4.4, 5.5);
-        verify(todayWeatherCard).setPrecipitationChance(6);
-        verify(todayWeatherCard).setDescription("description");
+    private Object callModelCallbackWithForecast(InvocationOnMock invocation) {
+        TodayWeatherTask.Callback callback = (TodayWeatherTask.Callback) invocation.getArguments()[0];
+        callback.onWeatherLoaded(forecast);
+        return null;
     }
 }
