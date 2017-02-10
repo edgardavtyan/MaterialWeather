@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class DarkSkyWeatherProvider {
-    private static final int HOURS_UNTIL_REFRESH = 3;
+    private static final int HOURS_UNTIL_REFRESH = 1;
 
     private final WebClient webClient;
     private final Geocoding geocoding;
