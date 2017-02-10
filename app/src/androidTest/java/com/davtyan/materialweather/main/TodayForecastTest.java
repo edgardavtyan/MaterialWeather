@@ -3,27 +3,21 @@ package com.davtyan.materialweather.main;
 import android.location.Address;
 
 import com.davtyan.materialweather.lib_test.BaseTest;
+import com.davtyan.materialweather.lib_test.utils.TestResources;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.InputStream;
 import java.util.Locale;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TodayForecastTest extends BaseTest {
-    private static String json;
     private static Address address;
 
     @BeforeClass
     public static void beforeClass() {
-        InputStream stream = TodayForecastTest.class.getClassLoader().getResourceAsStream("test-data.json");
-        Scanner s = new Scanner(stream).useDelimiter("\\A");
-        json = s.hasNext() ? s.next() : "";
-
         address = new Address(Locale.getDefault());
         address.setCountryName("Ukraine");
         address.setAdminArea("Kyiv");
@@ -31,7 +25,7 @@ public class TodayForecastTest extends BaseTest {
 
     @Test
     public void constructor_correctJson_initFieldsFromJson() {
-        TodayForecast forecast = new TodayForecast(json, address);
+        TodayForecast forecast = new TodayForecast(TestResources.testJson, address);
 
         assertThat(forecast.getWindSpeed()).isEqualTo(6.79);
         assertThat(forecast.getDate()).isEqualTo(1486754618000l);
