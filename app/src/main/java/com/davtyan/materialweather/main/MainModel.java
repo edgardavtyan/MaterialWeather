@@ -14,9 +14,7 @@ public class MainModel implements MainMvp.Model {
     @Override
     public void getTodayWeather(Callback callback) {
         if (darkSkyWeatherProvider.isCachedForecastAvailable()) {
-            TodayForecast forecast = new TodayForecast(
-                    darkSkyWeatherProvider.getForecastFromCache(),
-                    darkSkyWeatherProvider.getFullLocation(location));
+            TodayForecast forecast = darkSkyWeatherProvider.getForecastFromCache(location);
             callback.onWeatherLoaded(forecast);
         } else {
             new TodayWeatherTask(darkSkyWeatherProvider, callback).execute(location);

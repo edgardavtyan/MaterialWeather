@@ -16,9 +16,7 @@ public class TodayWeatherTask extends AsyncTask<String, Void, TodayForecast> {
 
     @Override
     protected TodayForecast doInBackground(String... location) {
-        return new TodayForecast(
-                weatherProvider.getForecastForToday(location[0]),
-                weatherProvider.getFullLocation(location[0]));
+        return weatherProvider.getForecastForToday(location[0]);
     }
 
     @Override

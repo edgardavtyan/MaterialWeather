@@ -2,6 +2,7 @@ package com.davtyan.materialweather.providers.darksky;
 
 import android.location.Address;
 
+import com.davtyan.materialweather.main.TodayForecast;
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
 
@@ -27,7 +28,7 @@ public class DarkSkyWeatherProvider {
         this.apiKey = apiKey;
     }
 
-    public String getForecastForToday(String location) {
+    public TodayForecast getForecastForToday(String location) {
         long dateNow = new Date().getTime();
         long dateCache = cache.getCachedFileDate();
         long dateDiffHours = TimeUnit.MILLISECONDS.toHours(dateNow - dateCache);
@@ -35,9 +36,9 @@ public class DarkSkyWeatherProvider {
             Address address = geocoding.getAddressFromLocation(location);
             String forecast = webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
             cache.save(forecast);
-            return forecast;
+            return new TodayForecast(forecast, getFullLocation(location));
         } else {
-            return cache.get();
+            return new TodayForecast(cache.get(), getFullLocation(location));
         }
     }
 
@@ -45,8 +46,8 @@ public class DarkSkyWeatherProvider {
         return geocoding.getAddressFromLocation(location);
     }
 
-    public String getForecastFromCache() {
-        return cache.get();
+    public TodayForecast getForecastFromCache(String location) {
+        return new TodayForecast(cache.get(), getFullLocation(location));
     }
 
     public boolean isCachedForecastAvailable() {
