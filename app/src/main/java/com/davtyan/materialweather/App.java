@@ -6,8 +6,10 @@ import android.content.Context;
 import com.davtyan.materialweather.main.MainFactory;
 import com.davtyan.materialweather.main.MainMvp;
 
+import lombok.Setter;
+
 public class App extends Application {
-    private MainFactory mainFactory;
+    private @Setter MainFactory mainFactory;
 
     public MainFactory getTodayWeatherFactory(
             Context context,
