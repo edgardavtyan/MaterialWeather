@@ -5,6 +5,7 @@ import com.davtyan.materialweather.views.TodayWeatherCard;
 public interface MainMvp {
     interface Model {
         void getTodayWeather(TodayWeatherTask.Callback callback);
+        void forceRefresh(TodayWeatherTask.Callback callback);
     }
 
     interface View {
@@ -16,5 +17,6 @@ public interface MainMvp {
 
     interface Presenter {
         void onCreate();
+        void onRefresh();
     }
 }

@@ -46,4 +46,16 @@ public class MainModelTest extends BaseTest {
 
         verify(callback, timeout(1000)).onWeatherLoaded(forecast);
     }
+
+    @Test
+    public void forceRefresh_getForecastFromProvider() {
+        TodayForecast forecast = mock(TodayForecast.class);
+        when(weatherProvider.getForecastForToday(LOCATION)).thenReturn(forecast);
+        when(weatherProvider.isCachedForecastAvailable()).thenReturn(false);
+
+        TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
+        model.forceRefresh(callback);
+
+        verify(callback, timeout(1000)).onWeatherLoaded(forecast);
+    }
 }

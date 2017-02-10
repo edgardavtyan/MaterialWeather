@@ -1,6 +1,7 @@
 package com.davtyan.materialweather.main;
 
 import android.annotation.SuppressLint;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -9,11 +10,11 @@ import com.davtyan.materialweather.lib_test.BaseTest;
 
 import org.junit.Test;
 
+import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertThat;
 
 @SuppressLint("StaticFieldLeak")
 public class MainActivityTest extends BaseTest {
@@ -66,5 +67,13 @@ public class MainActivityTest extends BaseTest {
         TextView currentLocationView = (TextView) activity.findViewById(R.id.location);
         runOnUiThread(() -> activity.setLocation("location"));
         assertThat(currentLocationView.getText()).isEqualTo("location");
+    }
+
+    @Test
+    public void onOptionsMenuItemSelected_refreshMenuItem_callPresenter() {
+        MenuItem item = mock(MenuItem.class);
+        when(item.getItemId()).thenReturn(R.id.menu_refresh);
+        activity.onOptionsItemSelected(item);
+        verify(presenter).onRefresh();
     }
 }

@@ -20,4 +20,9 @@ public class MainModel implements MainMvp.Model {
             new TodayWeatherTask(weatherProvider, callback).execute(location);
         }
     }
+
+    @Override
+    public void forceRefresh(TodayWeatherTask.Callback callback) {
+        new TodayWeatherTask(weatherProvider, callback).execute(location);
+    }
 }

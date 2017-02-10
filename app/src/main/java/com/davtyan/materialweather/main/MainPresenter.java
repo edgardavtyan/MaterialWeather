@@ -13,17 +13,24 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void onCreate() {
-        model.getTodayWeather(todayWeatherData -> {
-            view.setCurrentTemp(todayWeatherData.getCurrentTemp());
-            view.setCurrentCondition(todayWeatherData.getCondition(), todayWeatherData.getIcon());
-            view.setLocation(todayWeatherData.getLocation());
+        model.getTodayWeather(this::updateView);
+    }
 
-            TodayWeatherCard todayWeatherView = view.getTodayWeatherView();
-            todayWeatherView.setWindSpeed(todayWeatherData.getWindSpeed());
-            todayWeatherView.setDate(todayWeatherData.getDate());
-            todayWeatherView.setTemps(todayWeatherData.getLowTemp(), todayWeatherData.getHighTemp());
-            todayWeatherView.setPrecipitationChance(todayWeatherData.getPrecipitationChance());
-            todayWeatherView.setDescription(todayWeatherData.getDescription());
-        });
+    @Override
+    public void onRefresh() {
+        model.forceRefresh(this::updateView);
+    }
+
+    private void updateView(TodayForecast forecast) {
+        view.setCurrentTemp(forecast.getCurrentTemp());
+        view.setCurrentCondition(forecast.getCondition(), forecast.getIcon());
+        view.setLocation(forecast.getLocation());
+
+        TodayWeatherCard todayWeatherView = view.getTodayWeatherView();
+        todayWeatherView.setWindSpeed(forecast.getWindSpeed());
+        todayWeatherView.setDate(forecast.getDate());
+        todayWeatherView.setTemps(forecast.getLowTemp(), forecast.getHighTemp());
+        todayWeatherView.setPrecipitationChance(forecast.getPrecipitationChance());
+        todayWeatherView.setDescription(forecast.getDescription());
     }
 }
