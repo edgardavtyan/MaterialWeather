@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @BindView(R.id.today_weather) @Getter TodayWeatherCard todayWeatherView;
 
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.main_wrapper) LinearLayout mainWrapper;
     @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
@@ -36,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         MainFactory factory = app.getTodayWeatherFactory(this, this, "Kyiv");
         MainMvp.Presenter presenter = factory.getPresenter();
         presenter.onCreate();
+
+        toolbar.setTitleTextAppearance(this, R.style.Toolbar_Title);
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(
