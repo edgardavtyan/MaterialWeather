@@ -36,7 +36,7 @@
         android:layout_marginLeft="@dimen/space_normal"
         android:textSize="80sp"
         tools:text="21°"
-        style="@style/Text_Contrast.Thin"
+        style="@style/Text_Contrast.Light"
         />
 
     <TextView
@@ -46,7 +46,7 @@
         android:layout_marginLeft="@dimen/space_normal"
         android:textSize="24sp"
         tools:text="Ukraine, Kyiv City"
-        style="@style/Text_Contrast.Light"
+        style="@style/Text_Contrast"
         />
 
     <TextView
