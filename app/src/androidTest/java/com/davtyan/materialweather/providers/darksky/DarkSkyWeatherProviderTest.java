@@ -52,6 +52,7 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
     @Test
     public void getForecastForToday_refreshTimeoutNotReached_getForecastFromCache() {
         when(cache.getCachedFileDate()).thenReturn(new Date().getTime());
+        when(cache.exists()).thenReturn(true);
         when(cache.get()).thenReturn(TestResources.testJson);
         TodayForecast forecast = weatherProvider.getForecastForToday("location");
         assertThatForecastIsEqualToTestData(forecast);
@@ -72,15 +73,31 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
     }
 
     @Test
-    public void isCachedForecastAvailable_available_returnTrue() {
+    public void isNonOutdatedCachedForecastAvailable_availableAndNonOutdated_returnTrue() {
         when(cache.exists()).thenReturn(true);
-        assertThat(weatherProvider.isCachedForecastAvailable()).isTrue();
+        when(cache.getCachedFileDate()).thenReturn(new Date().getTime());
+        assertThat(weatherProvider.isNonOutdatedCachedForecastAvailable()).isTrue();
     }
 
     @Test
-    public void isCachedForecastAvailable_notAvailable_returnFalse() {
+    public void isNonOutdatedCachedForecastAvailable_availableButOutdated_returnFalse() {
+        when(cache.exists()).thenReturn(true);
+        when(cache.getCachedFileDate()).thenReturn(0l);
+        assertThat(weatherProvider.isNonOutdatedCachedForecastAvailable()).isFalse();
+    }
+
+    @Test
+    public void isNonOutdatedCachedForecastAvailable_nonOutdatedButUnavailable_returnFalse() {
         when(cache.exists()).thenReturn(false);
-        assertThat(weatherProvider.isCachedForecastAvailable()).isFalse();
+        when(cache.getCachedFileDate()).thenReturn(new Date().getTime());
+        assertThat(weatherProvider.isNonOutdatedCachedForecastAvailable()).isFalse();
+    }
+
+    @Test
+    public void isNonOutdatedCachedForecastAvailable_notAvailableAndOutdated_returnFalse() {
+        when(cache.exists()).thenReturn(false);
+        when(cache.getCachedFileDate()).thenReturn(0l);
+        assertThat(weatherProvider.isNonOutdatedCachedForecastAvailable()).isFalse();
     }
 
     private void assertThatForecastIsEqualToTestData(TodayForecast forecast) {

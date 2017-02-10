@@ -13,7 +13,7 @@ public class MainModel implements MainMvp.Model {
 
     @Override
     public void getTodayWeather(TodayWeatherTask.Callback callback) {
-        if (weatherProvider.isCachedForecastAvailable()) {
+        if (weatherProvider.isNonOutdatedCachedForecastAvailable()) {
             TodayForecast forecast = weatherProvider.getForecastFromCache(location);
             callback.onWeatherLoaded(forecast);
         } else {

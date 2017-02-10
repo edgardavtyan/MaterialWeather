@@ -1,6 +1,7 @@
 package com.davtyan.materialweather.providers.darksky;
 
 import android.location.Address;
+import android.util.Log;
 
 import com.davtyan.materialweather.main.TodayForecast;
 import com.davtyan.materialweather.utils.Geocoding;
@@ -29,16 +30,15 @@ public class DarkSkyWeatherProvider {
     }
 
     public TodayForecast getForecastForToday(String location) {
-        long dateNow = new Date().getTime();
-        long dateCache = cache.getCachedFileDate();
-        long dateDiffHours = TimeUnit.MILLISECONDS.toHours(dateNow - dateCache);
-        if (dateDiffHours > HOURS_UNTIL_REFRESH) {
+        if (isNonOutdatedCachedForecastAvailable()) {
+            Log.d(getClass().getSimpleName(), "cache");
+            return new TodayForecast(cache.get(), getFullLocation(location));
+        } else {
             Address address = geocoding.getAddressFromLocation(location);
             String forecast = webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
             cache.save(forecast);
+            Log.d(getClass().getSimpleName(), "api");
             return new TodayForecast(forecast, getFullLocation(location));
-        } else {
-            return new TodayForecast(cache.get(), getFullLocation(location));
         }
     }
 
@@ -47,11 +47,15 @@ public class DarkSkyWeatherProvider {
     }
 
     public TodayForecast getForecastFromCache(String location) {
+        Log.d(getClass().getSimpleName(), "fromCache");
         return new TodayForecast(cache.get(), getFullLocation(location));
     }
 
-    public boolean isCachedForecastAvailable() {
-        return cache.exists();
+    public boolean isNonOutdatedCachedForecastAvailable() {
+        long dateNow = new Date().getTime();
+        long dateCache = cache.getCachedFileDate();
+        long dateDiffHours = TimeUnit.MILLISECONDS.toHours(dateNow - dateCache);
+        return cache.exists() && dateDiffHours < HOURS_UNTIL_REFRESH;
     }
 
     private String getUrl(double latitude, double longitude) {

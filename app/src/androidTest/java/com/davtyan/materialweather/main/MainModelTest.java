@@ -27,7 +27,7 @@ public class MainModelTest extends BaseTest {
     public void getTodayWeather_getForecastFromCache() {
         TodayForecast forecast = mock(TodayForecast.class);
         when(weatherProvider.getForecastFromCache(LOCATION)).thenReturn(forecast);
-        when(weatherProvider.isCachedForecastAvailable()).thenReturn(true);
+        when(weatherProvider.isNonOutdatedCachedForecastAvailable()).thenReturn(true);
 
         TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
         model.getTodayWeather(callback);
@@ -53,7 +53,7 @@ public class MainModelTest extends BaseTest {
     private TodayForecast createMocKForecastWithCacheEnabled(boolean enabled) {
         TodayForecast forecast = mock(TodayForecast.class);
         when(weatherProvider.getForecastForToday(LOCATION)).thenReturn(forecast);
-        when(weatherProvider.isCachedForecastAvailable()).thenReturn(enabled);
+        when(weatherProvider.isNonOutdatedCachedForecastAvailable()).thenReturn(enabled);
         return forecast;
     }
 }
