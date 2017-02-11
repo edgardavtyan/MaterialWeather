@@ -21,9 +21,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
             app:title="@string/app_name"
             app:titleTextColor="@color/textColorContrastPrimary"
-            android:background="@null"
             />
 
     </android.support.design.widget.AppBarLayout>
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space_normal"
                 android:textSize="80sp"
-                tools:layout_marginTop="350dp"
+                tools:layout_marginTop="0dp"
                 tools:text="21°"
                 style="@style/Text_Contrast.Light"
                 />
@@ -94,6 +94,31 @@
                     android:orientation="vertical"
                     android:padding="@dimen/space_small"
                     >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily Forecast"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="@dimen/font_normal"
+                        />
+
+                    <TextView
+                        android:id="@+id/daily_summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_tiny"
+                        android:textColor="@color/textColorPrimary"
+                        tools:text="Light rain on Tuesday through Saturday, with temperatures peaking at 18°C on Tuesday."
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="@dimen/space_tiny"
+                        android:layout_marginTop="@dimen/space_tiny"
+                        android:background="@color/textColorPrimary"
+                        />
 
                     <LinearLayout
                         android:layout_width="wrap_content"

@@ -7,4 +7,6 @@
     <string name="today.pattern.wind">%1$.1f m/s</string>
     <string name="today.pattern.rain">%1$d%%</string>
 
+    <string name="daily.title">Daily Forecast</string>
+
 </resources>

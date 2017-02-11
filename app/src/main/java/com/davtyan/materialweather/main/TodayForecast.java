@@ -22,6 +22,7 @@ public class TodayForecast {
     private final double highTemp;
     private final int precipitationChance;
     private final String description;
+    private final String dailySummary;
     private final String condition;
     private final String icon;
     private final String location;
@@ -39,6 +40,8 @@ public class TodayForecast {
             condition = currentWeather.getString("summary");
             icon = currentWeather.getString("icon");
             location = String.format("%s, %s", address.getCountryName(), address.getAdminArea());
+
+            dailySummary = root.getJSONObject("daily").getString("summary");
 
             JSONObject dailyFirstDay = root
                     .getJSONObject("daily")

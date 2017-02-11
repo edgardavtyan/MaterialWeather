@@ -48,6 +48,7 @@ public class MainPresenter implements MainMvp.Presenter {
         view.setCurrentTemp(forecast.getCurrentTemp());
         view.setCurrentCondition(forecast.getCondition(), forecast.getIcon());
         view.setLocation(forecast.getLocation());
+        view.setDailySummary(forecast.getDailySummary());
 
         TodayWeatherCard todayWeatherView = view.getTodayWeatherView();
         todayWeatherView.setWindSpeed(forecast.getWindSpeed());

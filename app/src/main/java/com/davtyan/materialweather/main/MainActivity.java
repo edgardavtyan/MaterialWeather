@@ -32,7 +32,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
     @BindView(R.id.location) TextView locationView;
+
     @BindView(R.id.daily_forecasts) RecyclerView dailyList;
+    @BindView(R.id.daily_summary) TextView dailySummaryView;
 
     private MainMvp.Presenter presenter;
     private DailyForecastAdapter dailyForecastAdapter;
@@ -98,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void setLocation(String location) {
         locationView.setText(location);
+    }
+
+    @Override
+    public void setDailySummary(String summary) {
+        dailySummaryView.setText(summary);
     }
 
     @Override

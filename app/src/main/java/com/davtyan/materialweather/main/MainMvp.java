@@ -14,6 +14,7 @@ public interface MainMvp {
         void setCurrentTemp(double temp);
         void setCurrentCondition(String condition, String icon);
         void setLocation(String location);
+        void setDailySummary(String summary);
         void updateLists();
     }
 
