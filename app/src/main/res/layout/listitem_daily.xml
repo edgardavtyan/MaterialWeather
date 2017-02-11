@@ -56,14 +56,14 @@
     <Space style="@style/Daily.Space"/>
 
     <TextView
-        android:id="@+id/min_temp"
-        tools:text="-27°"
+        android:id="@+id/max_temp"
+        tools:text="-16°"
         style="@style/Daily.Text.Temperature"
         />
 
     <TextView
-        android:id="@+id/max_temp"
-        tools:text="-16°"
+        android:id="@+id/min_temp"
+        tools:text="-27°"
         style="@style/Daily.Text.Temperature"
         />
 
