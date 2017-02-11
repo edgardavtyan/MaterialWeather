@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         dailyForecastAdapter = factory.getDailyForecastAdapter();
         dailyList.setLayoutManager(new LinearLayoutManager(this));
         dailyList.setAdapter(dailyForecastAdapter);
+        dailyList.setNestedScrollingEnabled(false);
 
         presenter.onCreate();
 
