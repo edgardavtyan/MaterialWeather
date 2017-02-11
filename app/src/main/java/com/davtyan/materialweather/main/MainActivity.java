@@ -7,9 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.App;
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.BLACK);
         }
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        int dpScreenHeight = (int) (displayMetrics.heightPixels / displayMetrics.density);
+        int dpHeightWithoutTopPart = dpScreenHeight - 72;
+        ((LinearLayout.LayoutParams) currentTempView.getLayoutParams()).topMargin = dpHeightWithoutTopPart;
     }
 
     @Override
