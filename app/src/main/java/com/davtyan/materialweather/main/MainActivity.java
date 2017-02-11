@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @BindView(R.id.today_weather) @Getter TodayWeatherCard todayWeatherView;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.main_wrapper) FrameLayout mainWrapper;
+    @BindView(R.id.main_wrapper) LinearLayout mainWrapper;
     @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
     @BindView(R.id.location) TextView locationView;
