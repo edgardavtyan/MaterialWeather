@@ -20,7 +20,8 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.icon) ImageView iconView;
     @BindView(R.id.precipitation_chance) TextView precipChanceView;
     @BindView(R.id.wind_speed) TextView windSpeedView;
-    @BindView(R.id.min_max_temp) TextView tempsView;
+    @BindView(R.id.min_temp) TextView minTempView;
+    @BindView(R.id.max_temp) TextView maxTempView;
 
     private final Context context;
 
@@ -32,7 +33,7 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
 
     public void setDate(long dateMS) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E");
-        Date date = new Date(dateMS);
+        Date date = new Date(dateMS * 1000);
         dateView.setText(simpleDateFormat.format(date));
     }
 
@@ -41,14 +42,15 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setPrecipitationChance(double chance) {
-        //precipChanceView.setText((int) (chance * 100));
+        precipChanceView.setText(context.getString(R.string.today_pattern_rain, (int) (chance * 100)));
     }
 
     public void setWindSpeed(double windSpeed) {
-        windSpeedView.setText(Double.toString(windSpeed));
+        windSpeedView.setText(context.getString(R.string.today_pattern_wind, windSpeed));
     }
 
     public void setTemps(double minTemp, double maxTemp) {
-        tempsView.setText(context.getString(R.string.today_pattern_temps, minTemp, maxTemp));
+        minTempView.setText(context.getString(R.string.today_pattern_current_temp, minTemp));
+        maxTempView.setText(context.getString(R.string.today_pattern_current_temp, maxTemp));
     }
 }

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Daily_Text">
+    <style name="Daily" />
+
+    <style name="Daily.Text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/textColorPrimary</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/font_normal</item>
     </style>
 
-    <style name="Daily_Space">
-        <item name="android:layout_width">@dimen/space_normal</item>
+    <style name="Daily.Text.Temperature">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="Daily.Space">
+        <item name="android:layout_width">@dimen/space_small</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">right</item>
     </style>
 
 </resources>

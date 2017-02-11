@@ -11,43 +11,61 @@
     >
 
     <TextView
+        android:layout_width="40dp"
         android:id="@+id/date"
-        tools:text="WED"
-        style="@style/Daily_Text"
+        android:textAllCaps="true"
+        android:fontFamily="serif-monospace"
+        tools:text="MON"
+        style="@style/Daily.Text"
         />
 
-    <Space style="@style/Daily_Space"/>
+    <Space style="@style/Daily.Space"/>
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_sun"
         android:tint="@color/textColorPrimary"
         tools:src="@drawable/ic_sun"
         />
 
-    <Space style="@style/Daily_Space"/>
+    <Space
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        />
 
     <TextView
+        android:layout_width="40dp"
         android:id="@+id/precipitation_chance"
-        tools:text="30%"
-        style="@style/Daily_Text"
+        tools:text="100%"
+        style="@style/Daily.Text"
         />
 
-    <Space style="@style/Daily_Space"/>
+    <Space style="@style/Daily.Space"/>
 
     <TextView
+        android:layout_width="70dp"
         android:id="@+id/wind_speed"
-        tools:text="3.6 m/s"
-        style="@style/Daily_Text"
+        tools:text="23.6 m/s"
+        style="@style/Daily.Text"
         />
 
-    <Space style="@style/Daily_Space"/>
+    <Space style="@style/Daily.Space"/>
 
     <TextView
-        android:id="@+id/min_max_temp"
-        tools:text="-17° / -3°"
-        style="@style/Daily_Text"
+        android:id="@+id/min_temp"
+        tools:text="-27°"
+        style="@style/Daily.Text.Temperature"
         />
+
+    <TextView
+        android:id="@+id/max_temp"
+        tools:text="-16°"
+        style="@style/Daily.Text.Temperature"
+        />
+
+    <Space style="@style/Daily.Space"/>
 
 </LinearLayout>
