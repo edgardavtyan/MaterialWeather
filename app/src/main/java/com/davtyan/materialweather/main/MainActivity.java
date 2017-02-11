@@ -4,14 +4,17 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
 import com.davtyan.materialweather.providers.darksky.DrawableFromCondition;
 import com.davtyan.materialweather.views.TodayWeatherCard;
 
@@ -24,12 +27,14 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @BindView(R.id.today_weather) @Getter TodayWeatherCard todayWeatherView;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.main_wrapper) LinearLayout mainWrapper;
+    @BindView(R.id.main_wrapper) FrameLayout mainWrapper;
     @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
     @BindView(R.id.location) TextView locationView;
+    @BindView(R.id.daily_forecasts) RecyclerView dailyList;
 
     private MainMvp.Presenter presenter;
+    private DailyForecastAdapter dailyForecastAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         App app = (App) getApplicationContext();
         MainFactory factory = app.getTodayWeatherFactory(this, this, "Kyiv");
         presenter = factory.getPresenter();
+
+        dailyForecastAdapter = factory.getDailyForecastAdapter();
+        dailyList.setLayoutManager(new LinearLayoutManager(this));
+        dailyList.setAdapter(dailyForecastAdapter);
+
         presenter.onCreate();
 
         setSupportActionBar(toolbar);
@@ -81,5 +91,10 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void setLocation(String location) {
         locationView.setText(location);
+    }
+
+    @Override
+    public void updateLists() {
+        dailyForecastAdapter.notifyDataSetChanged();
     }
 }

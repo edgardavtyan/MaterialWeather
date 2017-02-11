@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?listPreferredItemHeightSmall"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/space_small"
+    android:paddingRight="@dimen/space_small"
+    >
+
+    <TextView
+        android:id="@+id/date"
+        tools:text="WED"
+        style="@style/Daily_Text"
+        />
+
+    <Space style="@style/Daily_Space"/>
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:tint="@color/textColorPrimary"
+        tools:src="@drawable/ic_sun"
+        />
+
+    <Space style="@style/Daily_Space"/>
+
+    <TextView
+        android:id="@+id/precipitation_chance"
+        tools:text="30%"
+        style="@style/Daily_Text"
+        />
+
+    <Space style="@style/Daily_Space"/>
+
+    <TextView
+        android:id="@+id/wind_speed"
+        tools:text="3.6 m/s"
+        style="@style/Daily_Text"
+        />
+
+    <Space style="@style/Daily_Space"/>
+
+    <TextView
+        android:id="@+id/min_max_temp"
+        tools:text="-17° / -3°"
+        style="@style/Daily_Text"
+        />
+
+</LinearLayout>

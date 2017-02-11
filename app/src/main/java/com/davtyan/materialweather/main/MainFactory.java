@@ -3,6 +3,7 @@ package com.davtyan.materialweather.main;
 import android.content.Context;
 
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
 import com.davtyan.materialweather.providers.darksky.DarkSkyForecastCache;
 import com.davtyan.materialweather.utils.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
@@ -19,6 +20,7 @@ public class MainFactory {
     private MainMvp.Model model;
     private MainMvp.Presenter presenter;
     private DarkSkyWeatherProvider darkSkyWeatherProvider;
+    private DailyForecastAdapter dailyForecastAdapter;
 
     public MainFactory(Context context, MainMvp.View view, String location) {
         this.context = context;
@@ -65,5 +67,11 @@ public class MainFactory {
                     getCache(),
                     apiKey);
         return darkSkyWeatherProvider;
+    }
+
+    public DailyForecastAdapter getDailyForecastAdapter() {
+        if (dailyForecastAdapter == null)
+            dailyForecastAdapter = new DailyForecastAdapter(getPresenter());
+        return dailyForecastAdapter;
     }
 }

@@ -1,68 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_wrapper"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+    <android.support.v4.widget.NestedScrollView
         android:layout_height="wrap_content"
-        android:background="@drawable/appbar_shadow_background"
-        app:elevation="0dp"
+        android:layout_width="match_parent"
         >
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/textColorContrastPrimary"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
-    </android.support.design.widget.AppBarLayout>
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/appbar_shadow_background"
+                app:elevation="0dp"
+                >
 
-    <TextView
-        android:id="@+id/current_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_normal"
-        android:textSize="80sp"
-        tools:text="21°"
-        style="@style/Text_Contrast.Light"
-        />
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="@string/app_name"
+                    app:titleTextColor="@color/textColorContrastPrimary"
+                    />
 
-    <TextView
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_normal"
-        android:textSize="24sp"
-        tools:text="Ukraine, Kyiv City"
-        style="@style/Text_Contrast"
-        />
+            </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:id="@+id/current_condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space_normal"
-        android:layout_marginLeft="@dimen/space_normal"
-        android:textSize="22sp"
-        tools:text="Partly cloudy"
-        style="@style/Text_Contrast"
-        />
+            <TextView
+                android:id="@+id/current_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_normal"
+                android:textSize="80sp"
+                tools:text="21°"
+                style="@style/Text_Contrast.Light"
+                />
 
-    <com.davtyan.materialweather.views.TodayWeatherCard
-        android:layout_margin="@dimen/space_tiny"
-        android:id="@+id/today_weather"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_normal"
+                android:textSize="24sp"
+                tools:text="Ukraine, Kyiv City"
+                style="@style/Text_Contrast"
+                />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/current_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_normal"
+                android:layout_marginLeft="@dimen/space_normal"
+                android:textSize="22sp"
+                tools:text="Partly cloudy"
+                style="@style/Text_Contrast"
+                />
+
+            <com.davtyan.materialweather.views.TodayWeatherCard
+                android:id="@+id/today_weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_tiny"
+                />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_tiny"
+                android:padding="@dimen/space_small"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/daily_forecasts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</FrameLayout>
