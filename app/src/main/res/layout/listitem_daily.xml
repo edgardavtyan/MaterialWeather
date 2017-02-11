@@ -3,11 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?listPreferredItemHeightSmall"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingLeft="@dimen/space_small"
     android:paddingRight="@dimen/space_small"
+    android:paddingBottom="@dimen/space_small"
     >
 
     <TextView
@@ -67,7 +68,5 @@
         tools:text="-16°"
         style="@style/Daily.Text.Temperature"
         />
-
-    <Space style="@style/Daily.Space"/>
 
 </LinearLayout>
