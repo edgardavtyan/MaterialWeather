@@ -139,14 +139,14 @@
                         <ImageView
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:layout_marginLeft="30dp"
+                            android:layout_marginLeft="27dp"
                             android:src="@drawable/ic_partly_cloudy_day"
                             />
 
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginLeft="56dp"
+                            android:layout_marginLeft="59dp"
                             android:src="@drawable/ic_umbrella"
                             />
 
