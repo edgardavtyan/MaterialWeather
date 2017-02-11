@@ -32,6 +32,7 @@ public class MainPresenter implements MainMvp.Presenter {
         holder.setPrecipitationChance(dailyForecast.getPrecipChance());
         holder.setTemps(dailyForecast.getMinTemp(), dailyForecast.getMaxTemp());
         holder.setWindSpeed(dailyForecast.getWindSpeed());
+        holder.setConditionIcon(dailyForecast.getIcon());
     }
 
     @Override
@@ -56,5 +57,6 @@ public class MainPresenter implements MainMvp.Presenter {
         todayWeatherView.setTemps(forecast.getLowTemp(), forecast.getHighTemp());
         todayWeatherView.setPrecipitationChance(forecast.getPrecipitationChance());
         todayWeatherView.setDescription(forecast.getDescription());
+        todayWeatherView.setIcon(forecast.getIcon());
     }
 }

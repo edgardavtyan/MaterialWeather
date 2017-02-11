@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.providers.darksky.IconFromCondition;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -52,5 +53,9 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
     public void setTemps(double minTemp, double maxTemp) {
         minTempView.setText(context.getString(R.string.today_pattern_current_temp, minTemp));
         maxTempView.setText(context.getString(R.string.today_pattern_current_temp, maxTemp));
+    }
+
+    public void setConditionIcon(String icon) {
+        iconView.setImageResource(IconFromCondition.get(icon));
     }
 }

@@ -24,9 +24,9 @@
         android:id="@+id/icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_sun"
+        android:src="@drawable/ic_clear_day"
         android:tint="@color/textColorPrimary"
-        tools:src="@drawable/ic_sun"
+        tools:src="@drawable/ic_clear_day"
         />
 
     <Space

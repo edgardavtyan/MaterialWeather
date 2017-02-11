@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.providers.darksky.IconFromCondition;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,6 +62,10 @@ public class TodayWeatherCard extends CardView {
 
     public void setDescription(String description) {
         descriptionView.setText(description);
+    }
+
+    public void setIcon(String icon) {
+        weatherIconView.setImageResource(IconFromCondition.get(icon));
     }
 
     private void init() {
