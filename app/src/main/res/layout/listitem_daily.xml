@@ -6,8 +6,6 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/space_small"
-    android:paddingRight="@dimen/space_small"
     android:paddingBottom="@dimen/space_small"
     >
 

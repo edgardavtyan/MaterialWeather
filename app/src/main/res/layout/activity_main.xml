@@ -101,7 +101,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:src="@drawable/ic_calendar"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="4dp"
                             />
 
                         <ImageView
@@ -115,7 +115,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:src="@drawable/ic_umbrella"
-                            android:layout_marginLeft="32dp"
+                            android:layout_marginLeft="56dp"
                             />
 
                         <ImageView
@@ -146,7 +146,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/textColorPrimary"
-                        android:layout_margin="@dimen/space_small"
+                        android:layout_marginTop="@dimen/space_tiny"
+                        android:layout_marginBottom="@dimen/space_tiny"
                         />
 
                     <android.support.v7.widget.RecyclerView
