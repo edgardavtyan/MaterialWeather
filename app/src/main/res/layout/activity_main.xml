@@ -98,24 +98,24 @@
                         >
 
                         <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/ic_calendar"
-                            android:layout_marginLeft="13dp"
+                            android:layout_marginLeft="15dp"
                             />
 
                         <ImageView
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/ic_partly_cloudy"
-                            android:layout_marginLeft="26dp"
+                            android:layout_marginLeft="30dp"
                             />
 
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:src="@drawable/ic_umbrella"
-                            android:layout_marginLeft="33dp"
+                            android:layout_marginLeft="32dp"
                             />
 
                         <ImageView
