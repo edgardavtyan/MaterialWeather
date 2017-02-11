@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Material Weather</string>
+
+    <string name="credit.darksky">Forecast data powered by <a href="https://darksky.net/poweredby/">DarkSky</a></string>
+    <string name="credit.meteocons">Weather icons are <a href="http://www.alessioatzeni.com/meteocons/">Meteocons</a> by Alessio Atzeni</string>
 </resources>

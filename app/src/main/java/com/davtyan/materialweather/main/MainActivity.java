@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @BindView(R.id.daily_forecasts) RecyclerView dailyList;
     @BindView(R.id.daily_summary) TextView dailySummaryView;
 
+    @BindView(R.id.credit_icons) TextView creditIconsView;
+    @BindView(R.id.credit_weather) TextView creditWeatherView;
+
     private MainMvp.Presenter presenter;
     private DailyForecastAdapter dailyForecastAdapter;
 
@@ -53,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         dailyList.setLayoutManager(new LinearLayoutManager(this));
         dailyList.setAdapter(dailyForecastAdapter);
         dailyList.setNestedScrollingEnabled(false);
+
+        creditIconsView.setMovementMethod(LinkMovementMethod.getInstance());
+        creditWeatherView.setMovementMethod(LinkMovementMethod.getInstance());
 
         presenter.onCreate();
 

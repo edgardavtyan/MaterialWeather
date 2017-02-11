@@ -192,6 +192,22 @@
 
             </android.support.v7.widget.CardView>
 
+            <TextView
+                android:id="@+id/credit_weather"
+                android:layout_marginLeft="@dimen/space_tiny"
+                android:linksClickable="true"
+                android:text="@string/credit.darksky"
+                style="@style/Text_Contrast"
+                />
+
+            <TextView
+                android:id="@+id/credit_icons"
+                android:layout_marginLeft="@dimen/space_tiny"
+                android:linksClickable="true"
+                android:text="@string/credit.meteocons"
+                style="@style/Text_Contrast"
+                />
+
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
