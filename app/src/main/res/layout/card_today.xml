@@ -108,7 +108,7 @@
                     >
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/font_medium"
                         android:layout_height="@dimen/font_medium"
                         android:layout_marginRight="@dimen/space_tiny"
                         android:src="@drawable/ic_wind"
@@ -124,7 +124,7 @@
                         />
 
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/font_medium"
                         android:layout_height="@dimen/font_medium"
                         android:layout_marginLeft="@dimen/space_normal"
                         android:layout_marginRight="@dimen/space_tiny"
