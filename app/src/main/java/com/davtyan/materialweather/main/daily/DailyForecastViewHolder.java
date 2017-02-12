@@ -1,7 +1,6 @@
 package com.davtyan.materialweather.main.daily;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,10 +35,6 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E");
         Date date = new Date(dateMS * 1000);
         dateView.setText(simpleDateFormat.format(date));
-    }
-
-    public void setIcon(@DrawableRes int drawableId) {
-        iconView.setImageResource(drawableId);
     }
 
     public void setPrecipitationChance(double chance) {

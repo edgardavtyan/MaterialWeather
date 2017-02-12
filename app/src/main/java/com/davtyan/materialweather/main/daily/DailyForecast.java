@@ -24,7 +24,7 @@ public class DailyForecast {
             minTemp = json.getDouble("temperatureMin");
             maxTemp = json.getDouble("temperatureMax");
             humidity = json.getDouble("humidity");
-            windSpeed = json.getDouble("humidity");
+            windSpeed = json.getDouble("windSpeed");
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }

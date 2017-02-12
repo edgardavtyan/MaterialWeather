@@ -6,9 +6,11 @@ import java.util.Scanner;
 public class TestResources {
 
     public static final String testJson;
+    public static final String testDailyJson;
 
     static {
         testJson = getResource("test-data.json");
+        testDailyJson = getResource("test-daily.json");
     }
 
     private static String getResource(String name) {
