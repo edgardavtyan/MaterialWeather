@@ -4,18 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingBottom="@dimen/space_small"
+    style="@style/Daily.Container"
     >
 
     <TextView
-        android:layout_width="40dp"
         android:id="@+id/date"
-        android:textAllCaps="true"
-        android:fontFamily="serif-monospace"
+        android:layout_width="40dp"
         tools:text="MON"
-        style="@style/Daily.Text"
+        style="@style/Daily.Text.Date"
         />
 
     <Space style="@style/Daily.Space"/>
@@ -24,33 +21,29 @@
         android:id="@+id/icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_clear_day"
-        android:tint="@color/textColorPrimary"
         tools:src="@drawable/ic_clear_day"
         />
 
     <Space
-        android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         />
 
     <TextView
-        android:layout_width="40dp"
         android:id="@+id/precipitation_chance"
+        android:layout_width="40dp"
         tools:text="100%"
-        android:gravity="right"
-        style="@style/Daily.Text"
+        style="@style/Daily.Text.RightAligned"
         />
 
     <Space style="@style/Daily.Space"/>
 
     <TextView
-        android:layout_width="70dp"
         android:id="@+id/wind_speed"
-        android:gravity="right"
+        android:layout_width="70dp"
         tools:text="23.6 m/s"
-        style="@style/Daily.Text"
+        style="@style/Daily.Text.RightAligned"
         />
 
     <Space style="@style/Daily.Space"/>

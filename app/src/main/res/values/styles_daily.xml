@@ -3,6 +3,11 @@
 
     <style name="Daily" />
 
+    <style name="Daily.Container">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingBottom">@dimen/space_small</item>
+    </style>
+
     <style name="Daily.Text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -10,9 +15,18 @@
         <item name="android:textSize">@dimen/font_normal</item>
     </style>
 
+    <style name="Daily.Text.RightAligned">
+        <item name="android:gravity">right</item>
+    </style>
+
     <style name="Daily.Text.Temperature">
         <item name="android:layout_width">35dp</item>
         <item name="android:gravity">right</item>
+    </style>
+
+    <style name="Daily.Text.Date">
+        <item name="android:fontFamily">serif-monospace</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="Daily.Space">
