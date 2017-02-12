@@ -11,6 +11,8 @@ import com.davtyan.materialweather.R;
 
 import org.junit.Before;
 
+import static org.mockito.Mockito.spy;
+
 public class BaseTest {
     protected Context context;
     protected Instrumentation instrumentation;
@@ -19,7 +21,7 @@ public class BaseTest {
     @Before
     public void beforeEach() {
         instrumentation = InstrumentationRegistry.getInstrumentation();
-        context = new ContextThemeWrapper(instrumentation.getTargetContext(), R.style.AppTheme);
+        context = spy(new ContextThemeWrapper(instrumentation.getTargetContext(), R.style.AppTheme));
         app = (App) context.getApplicationContext();
     }
 
