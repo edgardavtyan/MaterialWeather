@@ -10,8 +10,9 @@ import com.davtyan.materialweather.lib_test.BaseTest;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class DailyForecastViewHolderTest extends BaseTest {
     private DailyForecastViewHolder holder;
@@ -59,5 +60,12 @@ public class DailyForecastViewHolderTest extends BaseTest {
         holder.setTemps(34.5, 45.6);
         assertThat(minTempView.getText()).isEqualTo("34°");
         assertThat(maxTempView.getText()).isEqualTo("46°");
+    }
+
+    @Test
+    public void testViewBinding() {
+        DailyForecastViewHolder_ViewBinding viewBinding = new DailyForecastViewHolder_ViewBinding<>(holder, itemView);
+        viewBinding.unbind();
+        assertThatThrownBy(viewBinding::unbind).isInstanceOf(IllegalStateException.class);
     }
 }

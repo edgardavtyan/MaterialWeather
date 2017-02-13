@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -86,5 +87,12 @@ public class TodayWeatherCardTest extends BaseTest {
         ImageView iconView = (ImageView) todayWeatherCard.findViewById(R.id.weather_icon);
         todayWeatherCard.setIcon("clear-night");
         assertThat(iconView).hasImageResource(R.drawable.ic_clear_night);
+    }
+
+    @Test
+    public void testViewBinding() {
+        TodayWeatherCard_ViewBinding viewBinding = new TodayWeatherCard_ViewBinding<>(todayWeatherCard, todayWeatherCard);
+        viewBinding.unbind();
+        assertThatThrownBy(viewBinding::unbind).isInstanceOf(IllegalStateException.class);
     }
 }

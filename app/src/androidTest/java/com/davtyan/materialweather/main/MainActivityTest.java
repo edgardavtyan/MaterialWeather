@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -106,6 +107,14 @@ public class MainActivityTest extends BaseTest {
     public void updateLists_notifyDailyAdapter() {
         activity.updateLists();
         verify(adapter).notifyDataSetChangedNonFinal();
+    }
+
+    @Test
+    public void testViewBinding() {
+        MainActivity_ViewBinding viewBinding = new MainActivity_ViewBinding<>(activity, activity.getWindow().getDecorView());
+        viewBinding.unbind();
+        assertThatThrownBy(viewBinding::unbind).isInstanceOf(IllegalStateException.class);
+        activity = null;
     }
 
     private void clickOnMenuItemWithId(@IdRes int id) {
