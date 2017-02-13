@@ -29,25 +29,28 @@ public class MainModelTest extends BaseTest {
         when(weatherProvider.getForecastFromCache(LOCATION)).thenReturn(forecast);
         when(weatherProvider.isNonOutdatedCachedForecastAvailable()).thenReturn(true);
 
-        TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
-        model.getTodayWeather(callback);
-        verify(callback, timeout(1000)).onWeatherLoaded(forecast);
+        MainMvp.Model.OnWeatherLoadedListener listener = mock(MainMvp.Model.OnWeatherLoadedListener.class);
+        model.setOnWeatherLoadedListener(listener);
+        model.getTodayWeather();
+        verify(listener, timeout(1000)).onWeatherLoaded(forecast);
     }
 
     @Test
     public void getTodayWeather_getForecastFromProvider() {
         TodayForecast forecast = createMocKForecastWithCacheEnabled(false);
-        TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
-        model.getTodayWeather(callback);
-        verify(callback, timeout(1000)).onWeatherLoaded(forecast);
+        MainMvp.Model.OnWeatherLoadedListener listener = mock(MainMvp.Model.OnWeatherLoadedListener.class);
+        model.setOnWeatherLoadedListener(listener);
+        model.getTodayWeather();
+        verify(listener, timeout(1000)).onWeatherLoaded(forecast);
     }
 
     @Test
     public void forceRefresh_getForecastFromProvider() {
         TodayForecast forecast = createMocKForecastWithCacheEnabled(false);
-        TodayWeatherTask.Callback callback = mock(TodayWeatherTask.Callback.class);
-        model.forceRefresh(callback);
-        verify(callback, timeout(1000)).onWeatherLoaded(forecast);
+        MainMvp.Model.OnWeatherLoadedListener listener = mock(MainMvp.Model.OnWeatherLoadedListener.class);
+        model.setOnWeatherLoadedListener(listener);
+        model.forceRefresh();
+        verify(listener, timeout(1000)).onWeatherLoaded(forecast);
     }
 
     private TodayForecast createMocKForecastWithCacheEnabled(boolean enabled) {
