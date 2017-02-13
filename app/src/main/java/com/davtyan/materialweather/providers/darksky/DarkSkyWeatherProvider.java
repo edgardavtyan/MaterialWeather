@@ -1,10 +1,8 @@
 package com.davtyan.materialweather.providers.darksky;
 
-import android.location.Address;
-import android.util.Log;
-
 import com.davtyan.materialweather.main.TodayForecast;
-import com.davtyan.materialweather.utils.Geocoding;
+import com.davtyan.materialweather.providers.Geocoding;
+import com.davtyan.materialweather.providers.LocationInfo;
 import com.davtyan.materialweather.utils.WebClient;
 
 import java.util.Date;
@@ -33,19 +31,18 @@ public class DarkSkyWeatherProvider {
         if (isNonOutdatedCachedForecastAvailable()) {
             return new TodayForecast(cache.get(), getFullLocation(location));
         } else {
-            Address address = geocoding.getAddressFromLocation(location);
+            LocationInfo address = geocoding.getAddressFromLocation(location);
             String forecast = webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
             cache.save(forecast);
             return new TodayForecast(forecast, getFullLocation(location));
         }
     }
 
-    public Address getFullLocation(String location) {
+    public LocationInfo getFullLocation(String location) {
         return geocoding.getAddressFromLocation(location);
     }
 
     public TodayForecast getForecastFromCache(String location) {
-        Log.d(getClass().getSimpleName(), "fromCache");
         return new TodayForecast(cache.get(), getFullLocation(location));
     }
 

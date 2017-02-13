@@ -1,17 +1,15 @@
 package com.davtyan.materialweather.providers.darksky;
 
-import android.location.Address;
-
 import com.davtyan.materialweather.lib_test.BaseTest;
 import com.davtyan.materialweather.lib_test.utils.TestResources;
 import com.davtyan.materialweather.main.TodayForecast;
-import com.davtyan.materialweather.utils.Geocoding;
+import com.davtyan.materialweather.providers.Geocoding;
+import com.davtyan.materialweather.providers.LocationInfo;
 import com.davtyan.materialweather.utils.WebClient;
 
 import org.junit.Test;
 
 import java.util.Date;
-import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
@@ -33,12 +31,12 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
         cache = mock(DarkSkyForecastCache.class);
         weatherProvider = new DarkSkyWeatherProvider(webClient, geocoding, cache, "123");
 
-        Address address = new Address(Locale.getDefault());
-        address.setCountryName("Country");
-        address.setAdminArea("City");
-        address.setLatitude(1);
-        address.setLongitude(2);
-        when(geocoding.getAddressFromLocation("location")).thenReturn(address);
+        LocationInfo locationInfo = new LocationInfo();
+        locationInfo.setCountry("Country");
+        locationInfo.setAdminArea("City");
+        locationInfo.setLatitude(1);
+        locationInfo.setLongitude(2);
+        when(geocoding.getAddressFromLocation("location")).thenReturn(locationInfo);
     }
 
     @Test
@@ -67,9 +65,9 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
 
     @Test
     public void getFullLocation_returnLocationAddress() {
-        Address address = new Address(Locale.getDefault());
-        when(geocoding.getAddressFromLocation("location")).thenReturn(address);
-        assertThat(weatherProvider.getFullLocation("location")).isSameAs(address);
+        LocationInfo locationInfo = new LocationInfo();
+        when(geocoding.getAddressFromLocation("location")).thenReturn(locationInfo);
+        assertThat(weatherProvider.getFullLocation("location")).isSameAs(locationInfo);
     }
 
     @Test

@@ -1,8 +1,7 @@
 package com.davtyan.materialweather.main;
 
-import android.location.Address;
-
 import com.davtyan.materialweather.main.daily.DailyForecast;
+import com.davtyan.materialweather.providers.LocationInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +28,7 @@ public class TodayForecast {
 
     private final List<DailyForecast> dailyForecasts;
 
-    public TodayForecast(String jsonString, Address address) {
+    public TodayForecast(String jsonString, LocationInfo address) {
         try {
             JSONObject root = new JSONObject(jsonString);
             JSONObject currentWeather = root.getJSONObject("currently");
@@ -39,7 +38,7 @@ public class TodayForecast {
             currentTemp = currentWeather.getDouble("temperature");
             condition = currentWeather.getString("summary");
             icon = currentWeather.getString("icon");
-            location = String.format("%s, %s", address.getCountryName(), address.getAdminArea());
+            location = String.format("%s, %s", address.getCountry(), address.getAdminArea());
 
             dailySummary = root.getJSONObject("daily").getString("summary");
 

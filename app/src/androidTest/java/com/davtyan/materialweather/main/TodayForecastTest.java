@@ -1,31 +1,28 @@
 package com.davtyan.materialweather.main;
 
-import android.location.Address;
-
 import com.davtyan.materialweather.lib_test.BaseTest;
 import com.davtyan.materialweather.lib_test.utils.TestResources;
+import com.davtyan.materialweather.providers.LocationInfo;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TodayForecastTest extends BaseTest {
-    private static Address address;
+    private static LocationInfo locationInfo;
 
     @BeforeClass
     public static void beforeClass() {
-        address = new Address(Locale.getDefault());
-        address.setCountryName("Ukraine");
-        address.setAdminArea("Kyiv");
+        locationInfo = new LocationInfo();
+        locationInfo.setCountry("Ukraine");
+        locationInfo.setAdminArea("Kyiv");
     }
 
     @Test
     public void constructor_correctJson_initFieldsFromJson() {
-        TodayForecast forecast = new TodayForecast(TestResources.testJson, address);
+        TodayForecast forecast = new TodayForecast(TestResources.testJson, locationInfo);
 
         assertThat(forecast.getWindSpeed()).isEqualTo(6.79);
         assertThat(forecast.getDate()).isEqualTo(1486754618000l);
