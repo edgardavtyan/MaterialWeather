@@ -31,13 +31,11 @@ public class DarkSkyWeatherProvider {
 
     public TodayForecast getForecastForToday(String location) {
         if (isNonOutdatedCachedForecastAvailable()) {
-            Log.d(getClass().getSimpleName(), "cache");
             return new TodayForecast(cache.get(), getFullLocation(location));
         } else {
             Address address = geocoding.getAddressFromLocation(location);
             String forecast = webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
             cache.save(forecast);
-            Log.d(getClass().getSimpleName(), "api");
             return new TodayForecast(forecast, getFullLocation(location));
         }
     }
