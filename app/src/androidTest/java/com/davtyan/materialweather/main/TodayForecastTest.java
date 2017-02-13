@@ -34,6 +34,8 @@ public class TodayForecastTest extends BaseTest {
         assertThat(forecast.getCondition()).isEqualTo("Overcast");
         assertThat(forecast.getIcon()).isEqualTo("cloudy");
         assertThat(forecast.getLocation()).isEqualTo("Ukraine, Kyiv");
+        assertThat(forecast.getDailySummary()).isEqualTo("Light rain throughout the week, with temperatures peaking at 66°F on Tuesday.");
+        assertThat(forecast.getDailyForecasts()).hasSize(8);
     }
 
     @Test
