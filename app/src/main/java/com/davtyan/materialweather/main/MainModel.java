@@ -2,9 +2,13 @@ package com.davtyan.materialweather.main;
 
 import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
 
+import lombok.Setter;
+
 public class MainModel implements MainMvp.Model {
     private final String location;
     private final DarkSkyWeatherProvider weatherProvider;
+
+    private @Setter OnWeatherLoadedListener onWeatherLoadedListener;
 
     public MainModel(DarkSkyWeatherProvider weatherProvider, String location) {
         this.weatherProvider = weatherProvider;
@@ -12,17 +16,17 @@ public class MainModel implements MainMvp.Model {
     }
 
     @Override
-    public void getTodayWeather(TodayWeatherTask.Callback callback) {
+    public void getTodayWeather() {
         if (weatherProvider.isNonOutdatedCachedForecastAvailable()) {
             TodayForecast forecast = weatherProvider.getForecastFromCache(location);
-            callback.onWeatherLoaded(forecast);
+            onWeatherLoadedListener.onWeatherLoaded(forecast);
         } else {
-            new TodayWeatherTask(weatherProvider, callback).execute(location);
+            new TodayWeatherTask(weatherProvider, onWeatherLoadedListener).execute(location);
         }
     }
 
     @Override
-    public void forceRefresh(TodayWeatherTask.Callback callback) {
-        new TodayWeatherTask(weatherProvider, callback).execute(location);
+    public void forceRefresh() {
+        new TodayWeatherTask(weatherProvider, onWeatherLoadedListener).execute(location);
     }
 }

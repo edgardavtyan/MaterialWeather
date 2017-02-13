@@ -5,8 +5,13 @@ import com.davtyan.materialweather.views.TodayWeatherCard;
 
 public interface MainMvp {
     interface Model {
-        void getTodayWeather(TodayWeatherTask.Callback callback);
-        void forceRefresh(TodayWeatherTask.Callback callback);
+        interface OnWeatherLoadedListener {
+            void onWeatherLoaded(TodayForecast forecast);
+        }
+
+        void setOnWeatherLoadedListener(OnWeatherLoadedListener listener);
+        void getTodayWeather();
+        void forceRefresh();
     }
 
     interface View {

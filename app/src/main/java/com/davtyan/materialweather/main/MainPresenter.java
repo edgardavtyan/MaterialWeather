@@ -4,7 +4,7 @@ import com.davtyan.materialweather.main.daily.DailyForecast;
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
 import com.davtyan.materialweather.views.TodayWeatherCard;
 
-public class MainPresenter implements MainMvp.Presenter {
+public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeatherLoadedListener {
     private final MainMvp.View view;
     private final MainMvp.Model model;
 
@@ -13,16 +13,17 @@ public class MainPresenter implements MainMvp.Presenter {
     public MainPresenter(MainMvp.View view, MainMvp.Model model) {
         this.view = view;
         this.model = model;
+        this.model.setOnWeatherLoadedListener(this);
     }
 
     @Override
     public void onCreate() {
-        model.getTodayWeather(this::updateView);
+        model.getTodayWeather();
     }
 
     @Override
     public void onRefresh() {
-        model.forceRefresh(this::updateView);
+        model.forceRefresh();
     }
 
     @Override
@@ -39,6 +40,11 @@ public class MainPresenter implements MainMvp.Presenter {
     public int getDailyItemsCount() {
         if (forecast == null) return 0;
         return forecast.getDailyForecasts().size();
+    }
+
+    @Override
+    public void onWeatherLoaded(TodayForecast forecast) {
+        updateView(forecast);
     }
 
     private void updateView(TodayForecast forecast) {
