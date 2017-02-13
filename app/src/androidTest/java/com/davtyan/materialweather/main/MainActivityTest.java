@@ -1,12 +1,15 @@
 package com.davtyan.materialweather.main;
 
 import android.annotation.SuppressLint;
+import android.support.annotation.IdRes;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.lib_test.BaseTest;
+import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
+import com.davtyan.materialweather.views.TodayWeatherCard;
 
 import org.junit.Test;
 
@@ -14,12 +17,14 @@ import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertT
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @SuppressLint("StaticFieldLeak")
 public class MainActivityTest extends BaseTest {
     private static MainActivity activity;
     private static MainMvp.Presenter presenter;
+    private static DailyForecastAdapter adapter;
 
     @Override
     public void beforeEach() {
@@ -27,9 +32,11 @@ public class MainActivityTest extends BaseTest {
 
         if (activity == null) {
             presenter = mock(MainMvp.Presenter.class);
+            adapter = mock(DailyForecastAdapter.class);
 
             MainFactory factory = mock(MainFactory.class);
             when(factory.getPresenter()).thenReturn(presenter);
+            when(factory.getDailyForecastAdapter()).thenReturn(adapter);
 
             app.setMainFactory(factory);
 
@@ -40,6 +47,12 @@ public class MainActivityTest extends BaseTest {
     @Test
     public void onCreate_callPresenter() {
         verify(presenter).onCreate();
+    }
+
+    @Test
+    public void getTodayWeatherView_returnCorrectView() {
+        TodayWeatherCard todayWeatherCard = (TodayWeatherCard) activity.findViewById(R.id.today_weather);
+        assertThat(activity.getTodayWeatherView()).isSameAs(todayWeatherCard);
     }
 
     @Test
@@ -55,6 +68,7 @@ public class MainActivityTest extends BaseTest {
         runOnUiThread(() -> activity.setCurrentCondition("condition", "clear-day"));
         assertThat(currentConditionView.getText()).isEqualTo("condition");
     }
+
     @Test
     public void setCurrentCondition_setBackground() {
         LinearLayout mainWrapper = (LinearLayout) activity.findViewById(R.id.main_wrapper);
@@ -70,10 +84,33 @@ public class MainActivityTest extends BaseTest {
     }
 
     @Test
+    public void setDailySummary_setText() {
+        TextView dailySummaryView = (TextView) activity.findViewById(R.id.daily_summary);
+        runOnUiThread(() -> activity.setDailySummary("daily summary"));
+        assertThat(dailySummaryView.getText()).isEqualTo("daily summary");
+    }
+
+    @Test
     public void onOptionsMenuItemSelected_refreshMenuItem_callPresenter() {
-        MenuItem item = mock(MenuItem.class);
-        when(item.getItemId()).thenReturn(R.id.menu_refresh);
-        activity.onOptionsItemSelected(item);
+        clickOnMenuItemWithId(R.id.menu_refresh);
         verify(presenter).onRefresh();
+    }
+
+    @Test
+    public void onOptionsMenuItemSelected_otherMenuItem_doNothing() {
+        clickOnMenuItemWithId(-1);
+        verifyNoMoreInteractions(presenter);
+    }
+
+    @Test
+    public void updateLists_notifyDailyAdapter() {
+        activity.updateLists();
+        verify(adapter).notifyDataSetChangedNonFinal();
+    }
+
+    private void clickOnMenuItemWithId(@IdRes int id) {
+        MenuItem item = mock(MenuItem.class);
+        when(item.getItemId()).thenReturn(id);
+        activity.onOptionsItemSelected(item);
     }
 }

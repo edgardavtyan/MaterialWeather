@@ -1,14 +1,14 @@
 package com.davtyan.materialweather.main.daily;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.lib.testable.TestableAdapter;
 import com.davtyan.materialweather.main.MainMvp;
 
-public class DailyForecastAdapter extends RecyclerView.Adapter<DailyForecastViewHolder> {
+public class DailyForecastAdapter extends TestableAdapter<DailyForecastViewHolder> {
     private MainMvp.Presenter presenter;
 
     public DailyForecastAdapter(MainMvp.Presenter presenter) {

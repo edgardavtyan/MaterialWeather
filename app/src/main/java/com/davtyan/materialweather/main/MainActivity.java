@@ -1,7 +1,5 @@
 package com.davtyan.materialweather.main;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,10 +63,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
         setSupportActionBar(toolbar);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(Color.BLACK);
-        }
-
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         int dpScreenHeight = (int) (displayMetrics.heightPixels / displayMetrics.density);
         int dpHeightWithoutTopPart = dpScreenHeight - 72;
@@ -116,6 +110,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @Override
     public void updateLists() {
-        dailyForecastAdapter.notifyDataSetChanged();
+        dailyForecastAdapter.notifyDataSetChangedNonFinal();
     }
 }
