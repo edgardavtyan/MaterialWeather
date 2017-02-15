@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_small"
                     android:textColor="@color/textColorPrimary"
-                    android:textSize="@dimen/font_normal"
+                    android:textSize="@dimen/font_small"
                     tools:text="Sunny and hot, medium strength wind, slightly probable small rain"
                     />
 
