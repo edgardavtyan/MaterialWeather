@@ -52,9 +52,8 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
     public void getForecastForToday_refreshTimeoutNotReached_getForecastFromCache() {
         when(cache.getCachedFileDate()).thenReturn(new Date().getTime());
         when(cache.exists()).thenReturn(true);
-        when(cache.get()).thenReturn(TestResources.testJson);
-        TodayForecast forecast = weatherProvider.getForecastForToday("location");
-        assertThatForecastIsEqualToTestData(forecast);
+        when(cache.get()).thenReturn(TestResources.forecast);
+        assertThatForecastIsEqualToTestData(weatherProvider.getForecastForToday("location"));
     }
 
     @Test
@@ -66,9 +65,8 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
 
     @Test
     public void getForecastFromCache_returnCachedForecast() {
-        when(cache.get()).thenReturn(TestResources.testJson);
-        TodayForecast forecast = weatherProvider.getForecastFromCache("location");
-        assertThatForecastIsEqualToTestData(forecast);
+        when(cache.get()).thenReturn(TestResources.forecast);
+        assertThatForecastIsEqualToTestData(weatherProvider.getForecastFromCache());
     }
 
     @Test

@@ -18,7 +18,7 @@ public class MainModel implements MainMvp.Model {
     @Override
     public void getTodayWeather() {
         if (weatherProvider.isNonOutdatedCachedForecastAvailable()) {
-            TodayForecast forecast = weatherProvider.getForecastFromCache(location);
+            TodayForecast forecast = weatherProvider.getForecastFromCache();
             onWeatherLoadedListener.onWeatherLoaded(forecast);
         } else {
             new TodayWeatherTask(weatherProvider, onWeatherLoadedListener).execute(location);

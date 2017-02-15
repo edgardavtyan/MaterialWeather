@@ -36,11 +36,11 @@ public class DarkSkyWeatherProvider {
 
     public TodayForecast getForecastForToday(String location) {
         if (isNonOutdatedCachedForecastAvailable()) {
-            return parseJson(cache.get(), getFullLocation(location));
+            return cache.get();
         } else {
             LocationInfo address = geocoding.getAddressFromLocation(location);
             String forecast = webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
-            cache.save(forecast);
+            cache.save(parseJson(forecast, address));
             return parseJson(forecast, getFullLocation(location));
         }
     }
@@ -49,8 +49,8 @@ public class DarkSkyWeatherProvider {
         return geocoding.getAddressFromLocation(location);
     }
 
-    public TodayForecast getForecastFromCache(String location) {
-        return parseJson(cache.get(), getFullLocation(location));
+    public TodayForecast getForecastFromCache() {
+        return cache.get();
     }
 
     public boolean isNonOutdatedCachedForecastAvailable() {

@@ -4,10 +4,11 @@ import com.davtyan.materialweather.main.daily.DailyForecast;
 
 import java.util.List;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter @Setter @EqualsAndHashCode
 public class TodayForecast {
     private double windSpeed;
     private long date;
@@ -20,6 +21,5 @@ public class TodayForecast {
     private String condition;
     private String icon;
     private String location;
-
     private List<DailyForecast> dailyForecasts;
 }

@@ -8,6 +8,7 @@ import com.davtyan.materialweather.providers.darksky.DarkSkyForecastCache;
 import com.davtyan.materialweather.providers.Geocoding;
 import com.davtyan.materialweather.utils.WebClient;
 import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
+import com.google.gson.Gson;
 
 public class MainFactory {
     private final Context context;
@@ -21,6 +22,7 @@ public class MainFactory {
     private MainMvp.Presenter presenter;
     private DarkSkyWeatherProvider darkSkyWeatherProvider;
     private DailyForecastAdapter dailyForecastAdapter;
+    private Gson gson;
 
     public MainFactory(Context context, MainMvp.View view, String location) {
         this.context = context;
@@ -53,9 +55,15 @@ public class MainFactory {
         return geocoding;
     }
 
+    public Gson getGson() {
+        if (gson == null)
+            gson = new Gson();
+        return gson;
+    }
+
     public DarkSkyForecastCache getCache() {
         if (cache == null)
-            cache = new DarkSkyForecastCache(context);
+            cache = new DarkSkyForecastCache(context, getGson());
         return cache;
     }
 

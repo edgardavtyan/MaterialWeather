@@ -26,7 +26,7 @@ public class MainModelTest extends BaseTest {
     @Test
     public void getTodayWeather_getForecastFromCache() {
         TodayForecast forecast = mock(TodayForecast.class);
-        when(weatherProvider.getForecastFromCache(LOCATION)).thenReturn(forecast);
+        when(weatherProvider.getForecastFromCache()).thenReturn(forecast);
         when(weatherProvider.isNonOutdatedCachedForecastAvailable()).thenReturn(true);
 
         MainMvp.Model.OnWeatherLoadedListener listener = mock(MainMvp.Model.OnWeatherLoadedListener.class);
