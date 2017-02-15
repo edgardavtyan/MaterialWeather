@@ -65,8 +65,11 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
         DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
         int dpScreenHeight = (int) (displayMetrics.heightPixels / displayMetrics.density);
-        int dpHeightWithoutTopPart = dpScreenHeight - 72;
-        ((LinearLayout.LayoutParams) currentTempView.getLayoutParams()).topMargin = dpHeightWithoutTopPart;
+        int dpToolbarAndStatusbarHeight = 72;
+        int dpCurrentTempAndConditionHeight = 180;
+        int dpSpace = dpScreenHeight - dpToolbarAndStatusbarHeight - dpCurrentTempAndConditionHeight;
+        int pxSpace = (int) (dpSpace * displayMetrics.density);
+        currentTempView.setPadding(0, pxSpace, 0, 0);
     }
 
     @Override
