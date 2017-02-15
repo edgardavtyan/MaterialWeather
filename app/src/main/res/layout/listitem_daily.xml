@@ -41,7 +41,7 @@
 
     <TextView
         android:id="@+id/wind_speed"
-        android:layout_width="70dp"
+        android:layout_width="65dp"
         tools:text="23.6 m/s"
         style="@style/Daily.Text.RightAligned"
         />
