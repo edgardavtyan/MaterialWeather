@@ -12,6 +12,7 @@ import org.junit.Test;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -54,6 +55,13 @@ public class DarkSkyWeatherProviderTest extends BaseTest {
         when(cache.get()).thenReturn(TestResources.testJson);
         TodayForecast forecast = weatherProvider.getForecastForToday("location");
         assertThatForecastIsEqualToTestData(forecast);
+    }
+
+    @Test
+    public void getForecastForToday_invalidJson_throwRuntimeException() {
+        when(webClient.getString(any())).thenReturn("invalid json");
+        assertThatThrownBy(() -> weatherProvider.getForecastForToday("location"))
+                .isInstanceOf(RuntimeException.class);
     }
 
     @Test

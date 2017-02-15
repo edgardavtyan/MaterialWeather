@@ -1,11 +1,18 @@
 package com.davtyan.materialweather.providers.darksky;
 
 import com.davtyan.materialweather.main.TodayForecast;
+import com.davtyan.materialweather.main.daily.DailyForecast;
 import com.davtyan.materialweather.providers.Geocoding;
 import com.davtyan.materialweather.providers.LocationInfo;
 import com.davtyan.materialweather.utils.WebClient;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class DarkSkyWeatherProvider {
@@ -29,12 +36,12 @@ public class DarkSkyWeatherProvider {
 
     public TodayForecast getForecastForToday(String location) {
         if (isNonOutdatedCachedForecastAvailable()) {
-            return new TodayForecast(cache.get(), getFullLocation(location));
+            return parseJson(cache.get(), getFullLocation(location));
         } else {
             LocationInfo address = geocoding.getAddressFromLocation(location);
             String forecast = webClient.getString(getUrl(address.getLatitude(), address.getLongitude()));
             cache.save(forecast);
-            return new TodayForecast(forecast, getFullLocation(location));
+            return parseJson(forecast, getFullLocation(location));
         }
     }
 
@@ -43,7 +50,7 @@ public class DarkSkyWeatherProvider {
     }
 
     public TodayForecast getForecastFromCache(String location) {
-        return new TodayForecast(cache.get(), getFullLocation(location));
+        return parseJson(cache.get(), getFullLocation(location));
     }
 
     public boolean isNonOutdatedCachedForecastAvailable() {
@@ -57,5 +64,40 @@ public class DarkSkyWeatherProvider {
         return String.format(
                 "https://api.darksky.net/forecast/%s/%f,%f?units=si&exclude=minutely",
                 apiKey, latitude, longitude);
+    }
+
+    private TodayForecast parseJson(String jsonString, LocationInfo address) {
+        try {
+            JSONObject root = new JSONObject(jsonString);
+            JSONObject currentWeather = root.getJSONObject("currently");
+            TodayForecast forecast = new TodayForecast();
+            forecast.setDate(currentWeather.getLong("time") * 1000);
+            forecast.setWindSpeed(currentWeather.getDouble("windSpeed"));
+            forecast.setPrecipitationChance((int) (currentWeather.getDouble("precipProbability") * 100));
+            forecast.setCurrentTemp(currentWeather.getDouble("temperature"));
+            forecast.setCondition(currentWeather.getString("summary"));
+            forecast.setIcon(currentWeather.getString("icon"));
+            forecast.setLocation(String.format("%s, %s", address.getCountry(), address.getAdminArea()));
+            forecast.setDailySummary(root.getJSONObject("daily").getString("summary"));
+
+            JSONObject dailyFirstDay = root
+                    .getJSONObject("daily")
+                    .getJSONArray("data")
+                    .getJSONObject(0);
+            forecast.setDescription(dailyFirstDay.getString("summary"));
+            forecast.setLowTemp(dailyFirstDay.getDouble("temperatureMin"));
+            forecast.setHighTemp(dailyFirstDay.getDouble("temperatureMax"));
+
+            List<DailyForecast> dailyForecasts = new ArrayList<>();
+            JSONArray dailyForecastsJson = root.getJSONObject("daily").getJSONArray("data");
+            for (int i = 0; i < dailyForecastsJson.length(); i++) {
+                dailyForecasts.add(new DailyForecast(dailyForecastsJson.getJSONObject(i).toString()));
+            }
+            forecast.setDailyForecasts(dailyForecasts);
+
+            return forecast;
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
