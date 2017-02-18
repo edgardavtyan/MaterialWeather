@@ -18,8 +18,8 @@ public class DrawableFromCondition {
         map.put("wind", R.drawable.bmp_wind);
         map.put("fog", R.drawable.bmp_fog);
         map.put("cloudy", R.drawable.bmp_cloudy);
-        map.put("partly-cloudy-day", R.drawable.bmp_partly_cloudy);
-        map.put("partly-cloudy-night", R.drawable.bmp_partly_cloudy);
+        map.put("partly-cloudy-day", R.drawable.bmp_partly_cloudy_day);
+        map.put("partly-cloudy-night", R.drawable.bmp_partly_cloudy_night);
     }
 
     @DrawableRes

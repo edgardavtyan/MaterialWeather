@@ -22,7 +22,7 @@ public class DrawableFromConditionTest {
         assertThat(DrawableFromCondition.get("wind")).isEqualTo(R.drawable.bmp_wind);
         assertThat(DrawableFromCondition.get("fog")).isEqualTo(R.drawable.bmp_fog);
         assertThat(DrawableFromCondition.get("cloudy")).isEqualTo(R.drawable.bmp_cloudy);
-        assertThat(DrawableFromCondition.get("partly-cloudy-day")).isEqualTo(R.drawable.bmp_partly_cloudy);
-        assertThat(DrawableFromCondition.get("partly-cloudy-night")).isEqualTo(R.drawable.bmp_partly_cloudy);
+        assertThat(DrawableFromCondition.get("partly-cloudy-day")).isEqualTo(R.drawable.bmp_partly_cloudy_day);
+        assertThat(DrawableFromCondition.get("partly-cloudy-night")).isEqualTo(R.drawable.bmp_partly_cloudy_day);
     }
 }
