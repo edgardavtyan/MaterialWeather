@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/space_tiny"
     android:layout_marginLeft="@dimen/space_tiny"
     android:layout_marginRight="@dimen/space_tiny"
+    android:layout_marginTop="@dimen/space_tiny"
     >
 
     <LinearLayout
@@ -24,26 +24,21 @@
 
             <TextView
                 android:id="@+id/current_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/today.title"
                 style="@style/Text"
                 />
 
             <TextView
                 android:id="@+id/current_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space_small"
                 tools:text="FRI 24/02/14"
+                style="@style/Text.Small.Secondary"
                 />
 
         </LinearLayout>
 
         <TextView
             android:id="@+id/current_summary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_tiny"
             tools:text="Drizzle on Saturday through Monday, with temperatures rising to 12°C on Thursday."
             style="@style/Text.Small"
@@ -60,9 +55,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="bottom"
             android:baselineAligned="false"
+            android:gravity="bottom"
+            android:orientation="horizontal"
             >
 
             <FrameLayout
@@ -80,21 +75,19 @@
 
                     <TextView
                         android:id="@+id/current_temp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="-12dp"
                         android:fontFamily="sans-serif-light"
-                        android:textColor="@color/textColorPrimary"
                         android:textSize="44sp"
                         tools:text="24°C"
+                        style="@style/Text"
                         />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
                         android:layout_marginBottom="-2dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         >
 
                         <ImageView
@@ -105,8 +98,6 @@
 
                         <TextView
                             android:id="@+id/current_high_temp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             tools:text="33°"
                             style="@style/Text"
                             />
@@ -125,8 +116,6 @@
 
                         <TextView
                             android:id="@+id/current_low_temp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             tools:text="17°"
                             style="@style/Text"
                             />
@@ -155,11 +144,9 @@
 
                 <TextView
                     android:id="@+id/current_condition"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:textColor="@color/textColorPrimary"
                     tools:text="Clear sky"
+                    style="@style/Text"
                     />
 
             </LinearLayout>
@@ -173,8 +160,8 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="right"
+                    android:orientation="vertical"
                     tools:ignore="UselessParent"
                     >
 
@@ -194,11 +181,10 @@
 
                         <TextView
                             android:id="@+id/current_wind_speed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:textColor="@color/textColorPrimary"
                             android:textSize="16sp"
                             tools:text="25.3 m/s"
+                            style="@style/Text"
                             />
 
                     </LinearLayout>
@@ -220,11 +206,9 @@
 
                         <TextView
                             android:id="@+id/current_precipitation_chance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:textColor="@color/textColorPrimary"
-                            android:textSize="16sp"
                             tools:text="100%"
+                            style="@style/Text"
                             />
 
                     </LinearLayout>

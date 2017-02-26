@@ -6,8 +6,8 @@
     android:id="@+id/main_wrapper"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#11000000"
+    android:orientation="vertical"
     >
 
     <android.support.design.widget.AppBarLayout
@@ -40,14 +40,14 @@
             android:orientation="vertical"
             >
 
-            <include layout="@layout/partial_today" />
+            <include layout="@layout/partial_today"/>
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_tiny"
                 android:layout_marginLeft="@dimen/space_tiny"
                 android:layout_marginRight="@dimen/space_tiny"
-                android:layout_marginBottom="@dimen/space_tiny"
                 android:layout_marginTop="@dimen/space_small"
                 >
 
@@ -61,20 +61,15 @@
                     >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="@string/daily.title"
-                        android:textColor="@color/textColorPrimary"
-                        android:textSize="@dimen/font_normal"
+                        style="@style/Text"
                         />
 
                     <TextView
                         android:id="@+id/daily_summary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_tiny"
-                        android:textColor="@color/textColorPrimary"
                         tools:text="Light rain on Tuesday through Saturday, with temperatures peaking at 18°C on Tuesday."
+                        style="@style/Text.Small"
                         />
 
                     <View
@@ -130,8 +125,8 @@
                             android:id="@+id/imageView"
                             android:layout_width="35dp"
                             android:layout_height="20dp"
-                            android:paddingLeft="15dp"
                             android:layout_marginLeft="@dimen/space_small"
+                            android:paddingLeft="15dp"
                             android:src="@drawable/ic_arrow_up"
                             />
 
@@ -176,11 +171,11 @@
                 android:id="@+id/credit_icons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_tiny"
                 android:layout_marginLeft="@dimen/space_tiny"
                 android:linksClickable="true"
                 android:text="@string/credit.meteocons"
                 style="@style/Text.Small"
-                android:layout_marginBottom="@dimen/space_tiny"
                 />
 
         </LinearLayout>
