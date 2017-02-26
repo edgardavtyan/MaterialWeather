@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
-import com.davtyan.materialweather.providers.darksky.DrawableFromCondition;
 import com.davtyan.materialweather.providers.darksky.IconFromCondition;
 
 import java.text.SimpleDateFormat;
@@ -97,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void setCurrentCondition(String condition, String icon) {
         currentConditionView.setText(condition);
-        mainWrapper.setBackgroundResource(DrawableFromCondition.get(icon));
     }
 
     @Override

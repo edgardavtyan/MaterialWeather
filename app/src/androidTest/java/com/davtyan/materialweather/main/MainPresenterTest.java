@@ -24,9 +24,7 @@ public class MainPresenterTest extends BaseTest {
     @Override
     public void beforeEach() {
         super.beforeEach();
-        todayWeatherCard = mock(TodayWeatherCard.class);
         view = mock(MainMvp.View.class);
-        when(view.getTodayWeatherView()).thenReturn(todayWeatherCard);
         model = mock(MainMvp.Model.class);
         presenter = new MainPresenter(view, model);
     }

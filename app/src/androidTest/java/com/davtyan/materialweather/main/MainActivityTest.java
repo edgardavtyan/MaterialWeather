@@ -2,18 +2,16 @@ package com.davtyan.materialweather.main;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.IdRes;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.lib_test.BaseTest;
 import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
-import com.davtyan.materialweather.views.TodayWeatherCard;
 
 import org.junit.Test;
 
-import static com.davtyan.materialweather.lib_test.assertions.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
@@ -51,12 +49,6 @@ public class MainActivityTest extends BaseTest {
     }
 
     @Test
-    public void getTodayWeatherView_returnCorrectView() {
-        TodayWeatherCard todayWeatherCard = (TodayWeatherCard) activity.findViewById(R.id.today_weather);
-        assertThat(activity.getTodayWeatherView()).isSameAs(todayWeatherCard);
-    }
-
-    @Test
     public void setCurrentTemp_setTextWithPattern() {
         TextView currentTempView = (TextView) activity.findViewById(R.id.current_temp);
         runOnUiThread(() -> activity.setCurrentTemp(1.1));
@@ -71,17 +63,10 @@ public class MainActivityTest extends BaseTest {
     }
 
     @Test
-    public void setCurrentCondition_setBackground() {
-        LinearLayout mainWrapper = (LinearLayout) activity.findViewById(R.id.main_wrapper);
-        runOnUiThread(() -> activity.setCurrentCondition("condition", "clear-day"));
-        assertThat(mainWrapper).hasBackgroundResource(R.drawable.bmp_clear_day);
-    }
-
-    @Test
-    public void setCurrentLocation_setText() {
-        TextView currentLocationView = (TextView) activity.findViewById(R.id.location);
+    public void setCurrentLocation_setToolbarText() {
+        Toolbar toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
         runOnUiThread(() -> activity.setLocation("location"));
-        assertThat(currentLocationView.getText()).isEqualTo("location");
+        assertThat(toolbar.getTitle()).isEqualTo("location");
     }
 
     @Test
