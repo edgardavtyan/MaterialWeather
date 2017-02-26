@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.main_wrapper) LinearLayout mainWrapper;
     @BindView(R.id.current_condition) TextView currentConditionView;
-    @BindView(R.id.location) TextView locationView;
 
     @BindView(R.id.daily_forecasts) RecyclerView dailyList;
     @BindView(R.id.daily_summary) TextView dailySummaryView;
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @Override
     public void setLocation(String location) {
-        locationView.setText(location);
+        toolbar.setTitle(location);
     }
 
     @Override
