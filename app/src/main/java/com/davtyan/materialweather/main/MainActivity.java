@@ -6,9 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,19 +16,27 @@ import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
 import com.davtyan.materialweather.providers.darksky.DrawableFromCondition;
-import com.davtyan.materialweather.views.TodayWeatherCard;
+import com.davtyan.materialweather.providers.darksky.IconFromCondition;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import lombok.Getter;
 
 public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
-    @BindView(R.id.today_weather) @Getter TodayWeatherCard todayWeatherView;
+    @BindView(R.id.current_date) TextView currentDateView;
+    @BindView(R.id.current_temp) TextView currentTempView;
+    @BindView(R.id.current_low_temp) TextView currentLowTempView;
+    @BindView(R.id.current_high_temp) TextView currentHighTempView;
+    @BindView(R.id.current_wind_speed) TextView currentWindView;
+    @BindView(R.id.current_precipitation_chance) TextView currentPrecipitationChanceView;
+    @BindView(R.id.current_summary) TextView currentSummaryView;
+    @BindView(R.id.current_icon) ImageView currentConditionIconView;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.main_wrapper) LinearLayout mainWrapper;
-    @BindView(R.id.current_temp) TextView currentTempView;
     @BindView(R.id.current_condition) TextView currentConditionView;
     @BindView(R.id.location) TextView locationView;
 
@@ -62,14 +70,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
         presenter.onCreate();
 
         setSupportActionBar(toolbar);
-
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        int dpScreenHeight = (int) (displayMetrics.heightPixels / displayMetrics.density);
-        int dpToolbarAndStatusbarHeight = 72;
-        int dpCurrentTempAndConditionHeight = 180;
-        int dpSpace = dpScreenHeight - dpToolbarAndStatusbarHeight - dpCurrentTempAndConditionHeight;
-        int pxSpace = (int) (dpSpace * displayMetrics.density);
-        currentTempView.setPadding(0, pxSpace, 0, 0);
     }
 
     @Override
@@ -114,5 +114,41 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void updateLists() {
         dailyForecastAdapter.notifyDataSetChangedNonFinal();
+    }
+
+    @Override
+    public void setCurrentWindSpeed(double windSpeed) {
+        currentWindView.setText(getString(R.string.today_pattern_wind, windSpeed));
+    }
+
+    @Override
+    public void setCurrentDate(long date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E dd/MM/yy");
+        currentDateView.setText(dateFormat.format(new Date(date)));
+    }
+
+    @Override
+    public void setCurrentLowTemp(double lowTemp) {
+        currentLowTempView.setText(getString(R.string.today_pattern_low_high_temp, lowTemp));
+    }
+
+    @Override
+    public void setCurrentHighTemp(double highTemp) {
+        currentHighTempView.setText(getString(R.string.today_pattern_low_high_temp, highTemp));
+    }
+
+    @Override
+    public void setCurrentPrecipitationChance(int precipitationChance) {
+        currentPrecipitationChanceView.setText(getString(R.string.today_pattern_rain, precipitationChance));
+    }
+
+    @Override
+    public void setCurrentSummary(String summary) {
+        currentSummaryView.setText(summary);
+    }
+
+    @Override
+    public void setCurrentIcon(String icon) {
+        currentConditionIconView.setImageResource(IconFromCondition.get(icon));
     }
 }

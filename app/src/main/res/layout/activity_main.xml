@@ -44,17 +44,6 @@
             >
 
             <TextView
-                android:id="@+id/current_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/space_normal"
-                android:textSize="80sp"
-                tools:layout_marginTop="0dp"
-                tools:text="21°"
-                style="@style/Text_Contrast.Light"
-                />
-
-            <TextView
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -64,28 +53,15 @@
                 style="@style/Text_Contrast"
                 />
 
-            <TextView
-                android:id="@+id/current_condition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/space_normal"
-                android:layout_marginLeft="@dimen/space_normal"
-                android:textSize="22sp"
-                tools:text="Partly cloudy"
-                style="@style/Text_Contrast"
-                />
-
-            <com.davtyan.materialweather.views.TodayWeatherCard
-                android:id="@+id/today_weather"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_tiny"
-                />
+            <include layout="@layout/partial_today" />
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_tiny"
+                android:layout_marginLeft="@dimen/space_tiny"
+                android:layout_marginRight="@dimen/space_tiny"
+                android:layout_marginBottom="@dimen/space_tiny"
+                android:layout_marginTop="@dimen/space_small"
                 >
 
                 <LinearLayout

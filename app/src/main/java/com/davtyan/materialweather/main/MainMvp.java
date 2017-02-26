@@ -1,7 +1,6 @@
 package com.davtyan.materialweather.main;
 
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
-import com.davtyan.materialweather.views.TodayWeatherCard;
 
 public interface MainMvp {
     interface Model {
@@ -15,12 +14,18 @@ public interface MainMvp {
     }
 
     interface View {
-        TodayWeatherCard getTodayWeatherView();
         void setCurrentTemp(double temp);
         void setCurrentCondition(String condition, String icon);
         void setLocation(String location);
         void setDailySummary(String summary);
         void updateLists();
+        void setCurrentWindSpeed(double windSpeed);
+        void setCurrentDate(long date);
+        void setCurrentLowTemp(double lowTemp);
+        void setCurrentHighTemp(double highTemp);
+        void setCurrentPrecipitationChance(int precipitationChance);
+        void setCurrentSummary(String summary);
+        void setCurrentIcon(String icon);
     }
 
     interface Presenter {

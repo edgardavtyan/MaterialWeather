@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_tiny"
+    android:layout_marginLeft="@dimen/space_tiny"
+    android:layout_marginRight="@dimen/space_tiny"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_small"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/current_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today.title"
+                style="@style/Text"
+                />
+
+            <TextView
+                android:id="@+id/current_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_small"
+                tools:text="FRI 24/02/14"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/current_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_tiny"
+            tools:text="Drizzle on Saturday through Monday, with temperatures rising to 12°C on Thursday."
+            style="@style/Text.Small"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/space_tiny"
+            android:layout_marginTop="@dimen/space_tiny"
+            android:background="@color/textColorPrimary"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:baselineAligned="false"
+            >
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_horizontal"
+                    tools:ignore="UselessParent"
+                    >
+
+                    <TextView
+                        android:id="@+id/current_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-12dp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/textColorPrimary"
+                        android:textSize="44sp"
+                        tools:text="24°C"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_arrow_up"
+                            />
+
+                        <TextView
+                            android:id="@+id/current_high_temp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="33°"
+                            style="@style/Text"
+                            />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_arrow_down"
+                            />
+
+                        <TextView
+                            android:id="@+id/current_low_temp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="17°"
+                            style="@style/Text"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                >
+
+                <ImageView
+                    android:id="@+id/current_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    tools:src="@drawable/ic_partly_cloudy_day"
+                    />
+
+                <TextView
+                    android:id="@+id/current_condition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/textColorPrimary"
+                    tools:text="Clear sky"
+                    />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center_horizontal"
+                    tools:ignore="UselessParent"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginRight="@dimen/space_tiny"
+                            android:src="@drawable/ic_wind"
+                            />
+
+                        <TextView
+                            android:id="@+id/current_wind_speed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="16sp"
+                            tools:text="25.3 m/s"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_tiny"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginRight="@dimen/space_tiny"
+                            android:src="@drawable/ic_umbrella"
+                            />
+
+                        <TextView
+                            android:id="@+id/current_precipitation_chance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="16sp"
+                            tools:text="100%"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -2,7 +2,6 @@ package com.davtyan.materialweather.main;
 
 import com.davtyan.materialweather.main.daily.DailyForecast;
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
-import com.davtyan.materialweather.views.TodayWeatherCard;
 
 public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeatherLoadedListener {
     private final MainMvp.View view;
@@ -57,12 +56,12 @@ public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeather
         view.setLocation(forecast.getLocation());
         view.setDailySummary(forecast.getDailySummary());
 
-        TodayWeatherCard todayWeatherView = view.getTodayWeatherView();
-        todayWeatherView.setWindSpeed(forecast.getWindSpeed());
-        todayWeatherView.setDate(forecast.getDate());
-        todayWeatherView.setTemps(forecast.getLowTemp(), forecast.getHighTemp());
-        todayWeatherView.setPrecipitationChance(forecast.getPrecipitationChance());
-        todayWeatherView.setDescription(forecast.getDescription());
-        todayWeatherView.setIcon(forecast.getIcon());
+        view.setCurrentWindSpeed(forecast.getWindSpeed());
+        view.setCurrentDate(forecast.getDate());
+        view.setCurrentLowTemp(forecast.getLowTemp());
+        view.setCurrentHighTemp(forecast.getHighTemp());
+        view.setCurrentPrecipitationChance(forecast.getPrecipitationChance());
+        view.setCurrentSummary(forecast.getDescription());
+        view.setCurrentIcon(forecast.getIcon());
     }
 }
