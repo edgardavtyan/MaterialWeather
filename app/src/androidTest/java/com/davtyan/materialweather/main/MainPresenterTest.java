@@ -3,7 +3,6 @@ package com.davtyan.materialweather.main;
 import com.davtyan.materialweather.lib_test.BaseTest;
 import com.davtyan.materialweather.main.daily.DailyForecast;
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
-import com.davtyan.materialweather.views.TodayWeatherCard;
 
 import org.junit.Test;
 
@@ -16,7 +15,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class MainPresenterTest extends BaseTest {
-    private TodayWeatherCard todayWeatherCard;
     private MainMvp.View view;
     private MainMvp.Model model;
     private MainPresenter presenter;
@@ -109,10 +107,11 @@ public class MainPresenterTest extends BaseTest {
         verify(view, timeout(1000)).setCurrentTemp(3.3);
         verify(view, timeout(1000)).setCurrentCondition("condition", "icon");
         verify(view, timeout(1000)).setLocation("location");
-        verify(todayWeatherCard, timeout(1000)).setWindSpeed(1.1);
-        verify(todayWeatherCard, timeout(1000)).setDate(2l);
-        verify(todayWeatherCard, timeout(1000)).setTemps(4.4, 5.5);
-        verify(todayWeatherCard, timeout(1000)).setPrecipitationChance(6);
-        verify(todayWeatherCard, timeout(1000)).setDescription("description");
+        verify(view, timeout(1000)).setCurrentWindSpeed(1.1);
+        verify(view, timeout(1000)).setCurrentDate(2l);
+        verify(view, timeout(1000)).setCurrentLowTemp(4.4);
+        verify(view, timeout(1000)).setCurrentHighTemp(5.5);
+        verify(view, timeout(1000)).setCurrentPrecipitationChance(6);
+        verify(view, timeout(1000)).setCurrentSummary("description");
     }
 }
