@@ -15,7 +15,11 @@
         style="@style/Daily.Text.Date"
         />
 
-    <Space style="@style/Daily.Space"/>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
 
     <ImageView
         android:id="@+id/icon"
@@ -26,7 +30,7 @@
 
     <Space
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"
         />
 
