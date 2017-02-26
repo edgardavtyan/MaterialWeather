@@ -38,16 +38,16 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setPrecipitationChance(double chance) {
-        precipChanceView.setText(context.getString(R.string.today_pattern_rain, (int) (chance * 100)));
+        precipChanceView.setText(context.getString(R.string.pattern_precipitation, (int) (chance * 100)));
     }
 
     public void setWindSpeed(double windSpeed) {
-        windSpeedView.setText(context.getString(R.string.today_pattern_wind, windSpeed));
+        windSpeedView.setText(context.getString(R.string.pattern_wind, windSpeed));
     }
 
     public void setTemps(double minTemp, double maxTemp) {
-        minTempView.setText(context.getString(R.string.today_pattern_current_temp, minTemp));
-        maxTempView.setText(context.getString(R.string.today_pattern_current_temp, maxTemp));
+        minTempView.setText(context.getString(R.string.pattern_temp_unit, minTemp));
+        maxTempView.setText(context.getString(R.string.pattern_temp_unit, maxTemp));
     }
 
     public void setConditionIcon(String icon) {

@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/current_title"
-                android:text="@string/today.title"
+                android:text="@string/title_current"
                 style="@style/Text"
                 />
 

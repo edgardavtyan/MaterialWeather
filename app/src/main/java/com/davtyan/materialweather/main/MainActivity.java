@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @Override
     public void setCurrentTemp(double temp) {
-        currentTempView.setText(getString(R.string.today_pattern_current_temp, temp));
+        currentTempView.setText(getString(R.string.pattern_temp_unit, temp));
     }
 
     @Override
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @Override
     public void setCurrentWindSpeed(double windSpeed) {
-        currentWindView.setText(getString(R.string.today_pattern_wind, windSpeed));
+        currentWindView.setText(getString(R.string.pattern_wind, windSpeed));
     }
 
     @Override
@@ -126,17 +126,17 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
 
     @Override
     public void setCurrentLowTemp(double lowTemp) {
-        currentLowTempView.setText(getString(R.string.today_pattern_low_high_temp, lowTemp));
+        currentLowTempView.setText(getString(R.string.pattern_temp_no_unit, lowTemp));
     }
 
     @Override
     public void setCurrentHighTemp(double highTemp) {
-        currentHighTempView.setText(getString(R.string.today_pattern_low_high_temp, highTemp));
+        currentHighTempView.setText(getString(R.string.pattern_temp_no_unit, highTemp));
     }
 
     @Override
     public void setCurrentPrecipitationChance(int precipitationChance) {
-        currentPrecipitationChanceView.setText(getString(R.string.today_pattern_rain, precipitationChance));
+        currentPrecipitationChanceView.setText(getString(R.string.pattern_precipitation, precipitationChance));
     }
 
     @Override

@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Material Weather</string>
 
+    <string name="title_current">Current Forecast</string>
+    <string name="title_daily">Daily Forecast</string>
+
+    <string name="pattern_temp_unit">%1$.0f°C</string>
+    <string name="pattern_temp_no_unit">%1$.0f°</string>
+    <string name="pattern_wind">%1$.1f m/s</string>
+    <string name="pattern_precipitation">%1$d%%</string>
+
     <string name="credit.darksky">Forecast data powered by <a href="https://darksky.net/poweredby/">DarkSky</a></string>
     <string name="credit.meteocons">Weather icons are <a href="http://www.alessioatzeni.com/meteocons/">Meteocons</a> by Alessio Atzeni</string>
 </resources>

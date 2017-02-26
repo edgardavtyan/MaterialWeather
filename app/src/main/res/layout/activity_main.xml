@@ -61,7 +61,7 @@
                     >
 
                     <TextView
-                        android:text="@string/daily.title"
+                        android:text="@string/title_daily"
                         style="@style/Text"
                         />
 
