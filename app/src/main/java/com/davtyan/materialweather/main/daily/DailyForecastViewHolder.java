@@ -46,8 +46,8 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setTemps(double minTemp, double maxTemp) {
-        minTempView.setText(context.getString(R.string.pattern_temp_unit, minTemp));
-        maxTempView.setText(context.getString(R.string.pattern_temp_unit, maxTemp));
+        minTempView.setText(context.getString(R.string.pattern_temp_no_unit, minTemp));
+        maxTempView.setText(context.getString(R.string.pattern_temp_no_unit, maxTemp));
     }
 
     public void setConditionIcon(String icon) {
