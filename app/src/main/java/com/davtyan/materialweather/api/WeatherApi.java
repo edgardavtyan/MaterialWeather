@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 
 public class WeatherApi {
 
+    private static final String URL_BASE = "https://material-weather.herokuapp.com/";
+
     private final WebClient webClient;
     private final WeatherCache cache;
     private final Gson gson;
@@ -18,7 +20,7 @@ public class WeatherApi {
     public Forecast getForecast(String location) {
         if (!cache.isOutdated()) return cache.get();
 
-        String url = "https://material-weather.herokuapp.com/" + location;
+        String url = URL_BASE + location;
         String forecastString = new String(webClient.getBytes(url));
         Forecast forecast = gson.fromJson(forecastString, Forecast.class);
         cache.save(forecast);
