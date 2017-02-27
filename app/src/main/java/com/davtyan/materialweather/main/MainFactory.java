@@ -5,6 +5,7 @@ import android.content.Context;
 import com.davtyan.materialweather.api.WeatherApi;
 import com.davtyan.materialweather.api.WeatherCache;
 import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
+import com.davtyan.materialweather.utils.NetworkInfo;
 import com.davtyan.materialweather.utils.WebClient;
 import com.google.gson.Gson;
 
@@ -19,6 +20,7 @@ public class MainFactory {
     private DailyForecastAdapter dailyForecastAdapter;
     private Gson gson;
     private WeatherCache weatherCache;
+    private NetworkInfo networkInfo;
 
     public MainFactory(Context context, MainMvp.View view, String location) {
         this.context = context;
@@ -28,8 +30,14 @@ public class MainFactory {
 
     public MainMvp.Model getModel() {
         if (model == null)
-            model = new MainModel(getWeatherApi(), location);
+            model = new MainModel(getWeatherApi(), getNetworkInfo(), location);
         return model;
+    }
+
+    public NetworkInfo getNetworkInfo() {
+        if (networkInfo == null)
+            networkInfo = new NetworkInfo(context);
+        return networkInfo;
     }
 
     public MainMvp.Presenter getPresenter() {

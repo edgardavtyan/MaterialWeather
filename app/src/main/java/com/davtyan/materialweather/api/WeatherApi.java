@@ -27,4 +27,8 @@ public class WeatherApi {
             return cache.get();
         }
     }
+
+    public Forecast getForecastFromCache() {
+        return cache.get();
+    }
 }
