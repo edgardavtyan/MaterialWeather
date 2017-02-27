@@ -1,5 +1,6 @@
 package com.davtyan.materialweather.main;
 
+import com.davtyan.materialweather.api.Forecast;
 import com.davtyan.materialweather.lib_test.BaseTest;
 import com.davtyan.materialweather.main.daily.DailyForecast;
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
@@ -50,8 +51,8 @@ public class MainPresenterTest extends BaseTest {
         List dailyForecasts = mock(List.class);
         when(dailyForecasts.size()).thenReturn(3);
 
-        TodayForecast forecast = mock(TodayForecast.class);
-        when(forecast.getDailyForecasts()).thenReturn(dailyForecasts);
+        Forecast forecast = mock(Forecast.class);
+        when(forecast.getDaily()).thenReturn(dailyForecasts);
 
         presenter.onWeatherLoaded(forecast);
 
@@ -73,8 +74,8 @@ public class MainPresenterTest extends BaseTest {
         List dailyForecasts = mock(List.class);
         when(dailyForecasts.get(0)).thenReturn(dailyForecast);
 
-        TodayForecast forecast = mock(TodayForecast.class);
-        when(forecast.getDailyForecasts()).thenReturn(dailyForecasts);
+        Forecast forecast = mock(Forecast.class);
+        when(forecast.getDaily()).thenReturn(dailyForecasts);
 
         DailyForecastViewHolder holder = mock(DailyForecastViewHolder.class);
 
@@ -90,15 +91,15 @@ public class MainPresenterTest extends BaseTest {
 
     @Test
     public void onWeatherLoaded_updateView() {
-        TodayForecast forecast = mock(TodayForecast.class);
+        Forecast forecast = mock(Forecast.class);
         when(forecast.getWindSpeed()).thenReturn(1.1);
         when(forecast.getDate()).thenReturn(2l);
-        when(forecast.getCurrentTemp()).thenReturn(3.3);
-        when(forecast.getLowTemp()).thenReturn(4.4);
-        when(forecast.getHighTemp()).thenReturn(5.5);
-        when(forecast.getPrecipitationChance()).thenReturn(6);
+        when(forecast.getTemperature()).thenReturn(3.3);
+        when(forecast.getTemperatureMin()).thenReturn(4.4);
+        when(forecast.getTemperatureMax()).thenReturn(5.5);
+        when(forecast.getPrecipChance()).thenReturn(6.6);
         when(forecast.getCondition()).thenReturn("condition");
-        when(forecast.getDescription()).thenReturn("description");
+        when(forecast.getTodaySummary()).thenReturn("description");
         when(forecast.getIcon()).thenReturn("icon");
         when(forecast.getLocation()).thenReturn("location");
 

@@ -10,15 +10,13 @@ public class MainFactoryTest extends FactoryTest {
     @Override
     public void beforeEach() {
         super.beforeEach();
-        factory = new MainFactory(context, null, "Location");
+        factory = new MainFactory(null, "Location");
     }
 
     @Test
     public void test_factory_methods() throws Exception {
-        testFactoryMethod(factory::getCache);
         testFactoryMethod(factory::getDailyForecastAdapter);
-        testFactoryMethod(factory::getDarkSkyWeatherProvider);
-        testFactoryMethod(factory::getGeocoding);
+        testFactoryMethod(factory::getWeatherApi);
         testFactoryMethod(factory::getModel);
         testFactoryMethod(factory::getPresenter);
         testFactoryMethod(factory::getWebClient);

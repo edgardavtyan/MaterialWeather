@@ -1,6 +1,7 @@
-package com.davtyan.materialweather.providers.darksky;
+package com.davtyan.materialweather.main;
 
 import com.davtyan.materialweather.R;
+import com.davtyan.materialweather.main.IconFromCondition;
 
 import org.junit.Test;
 

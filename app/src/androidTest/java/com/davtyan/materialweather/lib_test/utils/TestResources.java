@@ -1,6 +1,6 @@
 package com.davtyan.materialweather.lib_test.utils;
 
-import com.davtyan.materialweather.main.TodayForecast;
+import com.davtyan.materialweather.api.Forecast;
 
 import java.io.InputStream;
 import java.util.List;
@@ -13,20 +13,20 @@ public class TestResources {
 
     public static final String testJson;
     public static final String testDailyJson;
-    public static final TodayForecast forecast;
+    public static final Forecast forecast;
 
     static {
         testJson = getResource("test-data.json");
         testDailyJson = getResource("test-daily.json");
 
-        forecast = new TodayForecast();
+        forecast = new Forecast();
         forecast.setWindSpeed(6.79);
         forecast.setDate(1486754618000l);
-        forecast.setCurrentTemp(57.36);
-        forecast.setLowTemp(52.84);
-        forecast.setHighTemp(59.35);
-        forecast.setPrecipitationChance(0);
-        forecast.setDescription("Light rain in the morning.");
+        forecast.setTemperature(57.36);
+        forecast.setTemperatureMin(52.84);
+        forecast.setTemperatureMax(59.35);
+        forecast.setPrecipChance(0);
+        forecast.setTodaySummary("Light rain in the morning.");
         forecast.setCondition("Overcast");
         forecast.setIcon("cloudy");
         forecast.setLocation("Country, City");
@@ -34,7 +34,7 @@ public class TestResources {
 
         List dailyForecasts = mock(List.class);
         when(dailyForecasts.size()).thenReturn(8);
-        forecast.setDailyForecasts(dailyForecasts);
+        forecast.setDaily(dailyForecasts);
     }
 
     private static String getResource(String name) {

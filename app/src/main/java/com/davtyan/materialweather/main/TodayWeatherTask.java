@@ -2,27 +2,28 @@ package com.davtyan.materialweather.main;
 
 import android.os.AsyncTask;
 
-import com.davtyan.materialweather.providers.darksky.DarkSkyWeatherProvider;
+import com.davtyan.materialweather.api.Forecast;
+import com.davtyan.materialweather.api.WeatherApi;
 
-public class TodayWeatherTask extends AsyncTask<String, Void, TodayForecast> {
+public class TodayWeatherTask extends AsyncTask<String, Void, Forecast> {
 
-    private final DarkSkyWeatherProvider weatherProvider;
+    private final WeatherApi weatherApi;
     private final MainMvp.Model.OnWeatherLoadedListener listener;
 
     public TodayWeatherTask(
-            DarkSkyWeatherProvider weatherProvider,
+            WeatherApi weatherApi,
             MainMvp.Model.OnWeatherLoadedListener listener) {
-        this.weatherProvider = weatherProvider;
+        this.weatherApi = weatherApi;
         this.listener = listener;
     }
 
     @Override
-    protected TodayForecast doInBackground(String... location) {
-        return weatherProvider.getForecastForToday(location[0]);
+    protected Forecast doInBackground(String... location) {
+        return weatherApi.getForecast(location[0]);
     }
 
     @Override
-    protected void onPostExecute(TodayForecast todayForecast) {
+    protected void onPostExecute(Forecast todayForecast) {
         listener.onWeatherLoaded(todayForecast);
     }
 }

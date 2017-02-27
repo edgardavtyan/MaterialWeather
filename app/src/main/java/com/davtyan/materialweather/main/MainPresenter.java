@@ -1,13 +1,14 @@
 package com.davtyan.materialweather.main;
 
-import com.davtyan.materialweather.main.daily.DailyForecast;
+import com.davtyan.materialweather.api.Forecast;
+import com.davtyan.materialweather.api.ForecastDaily;
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
 
 public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeatherLoadedListener {
     private final MainMvp.View view;
     private final MainMvp.Model model;
 
-    private TodayForecast forecast;
+    private Forecast forecast;
 
     public MainPresenter(MainMvp.View view, MainMvp.Model model) {
         this.view = view;
@@ -27,10 +28,10 @@ public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeather
 
     @Override
     public void onBindDailyHolder(DailyForecastViewHolder holder, int position) {
-        DailyForecast dailyForecast = forecast.getDailyForecasts().get(position);
+        ForecastDaily dailyForecast = forecast.getDaily().get(position);
         holder.setDate(dailyForecast.getDate());
-        holder.setPrecipitationChance(dailyForecast.getPrecipChance());
-        holder.setTemps(dailyForecast.getMinTemp(), dailyForecast.getMaxTemp());
+        holder.setPrecipitationChance(dailyForecast.getPrecipProbability());
+        holder.setTemps(dailyForecast.getTemperatureMin(), dailyForecast.getTemperatureMax());
         holder.setWindSpeed(dailyForecast.getWindSpeed());
         holder.setConditionIcon(dailyForecast.getIcon());
     }
@@ -38,30 +39,30 @@ public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeather
     @Override
     public int getDailyItemsCount() {
         if (forecast == null) return 0;
-        return forecast.getDailyForecasts().size();
+        return forecast.getDaily().size();
     }
 
     @Override
-    public void onWeatherLoaded(TodayForecast forecast) {
+    public void onWeatherLoaded(Forecast forecast) {
         updateView(forecast);
     }
 
-    private void updateView(TodayForecast forecast) {
+    private void updateView(Forecast forecast) {
         this.forecast = forecast;
 
         view.updateLists();
 
-        view.setCurrentTemp(forecast.getCurrentTemp());
+        view.setCurrentTemp(forecast.getTemperature());
         view.setCurrentCondition(forecast.getCondition(), forecast.getIcon());
         view.setLocation(forecast.getLocation());
         view.setDailySummary(forecast.getDailySummary());
 
         view.setCurrentWindSpeed(forecast.getWindSpeed());
         view.setCurrentDate(forecast.getDate());
-        view.setCurrentLowTemp(forecast.getLowTemp());
-        view.setCurrentHighTemp(forecast.getHighTemp());
-        view.setCurrentPrecipitationChance(forecast.getPrecipitationChance());
-        view.setCurrentSummary(forecast.getDescription());
+        view.setCurrentLowTemp(forecast.getTemperatureMin());
+        view.setCurrentHighTemp(forecast.getTemperatureMax());
+        view.setCurrentPrecipitationChance(forecast.getPrecipChance());
+        view.setCurrentSummary(forecast.getTodaySummary());
         view.setCurrentIcon(forecast.getIcon());
     }
 }

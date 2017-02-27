@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.davtyan.materialweather.R;
-import com.davtyan.materialweather.providers.darksky.IconFromCondition;
+import com.davtyan.materialweather.main.IconFromCondition;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

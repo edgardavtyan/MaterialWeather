@@ -1,4 +1,4 @@
-package com.davtyan.materialweather.providers.darksky;
+package com.davtyan.materialweather.main;
 
 import android.support.annotation.DrawableRes;
 

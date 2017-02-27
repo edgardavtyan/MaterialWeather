@@ -1,11 +1,12 @@
 package com.davtyan.materialweather.main;
 
+import com.davtyan.materialweather.api.Forecast;
 import com.davtyan.materialweather.main.daily.DailyForecastViewHolder;
 
 public interface MainMvp {
     interface Model {
         interface OnWeatherLoadedListener {
-            void onWeatherLoaded(TodayForecast forecast);
+            void onWeatherLoaded(Forecast forecast);
         }
 
         void setOnWeatherLoadedListener(OnWeatherLoadedListener listener);
@@ -23,7 +24,7 @@ public interface MainMvp {
         void setCurrentDate(long date);
         void setCurrentLowTemp(double lowTemp);
         void setCurrentHighTemp(double highTemp);
-        void setCurrentPrecipitationChance(int precipitationChance);
+        void setCurrentPrecipitationChance(double precipitationChance);
         void setCurrentSummary(String summary);
         void setCurrentIcon(String icon);
     }

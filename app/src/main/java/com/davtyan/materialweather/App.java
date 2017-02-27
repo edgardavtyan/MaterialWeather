@@ -16,7 +16,7 @@ public class App extends Application {
             MainMvp.View view,
             String location) {
         if (mainFactory == null)
-            return new MainFactory(context, view, location);
+            return new MainFactory(view, location);
         return mainFactory;
     }
 }

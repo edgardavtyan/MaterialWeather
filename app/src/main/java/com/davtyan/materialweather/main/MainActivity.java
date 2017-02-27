@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.davtyan.materialweather.App;
 import com.davtyan.materialweather.R;
 import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
-import com.davtyan.materialweather.providers.darksky.IconFromCondition;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -135,8 +134,8 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     }
 
     @Override
-    public void setCurrentPrecipitationChance(int precipitationChance) {
-        currentPrecipitationChanceView.setText(getString(R.string.pattern_precipitation, precipitationChance));
+    public void setCurrentPrecipitationChance(double precipitationChance) {
+        currentPrecipitationChanceView.setText(getString(R.string.pattern_precipitation, (int) (precipitationChance * 100)));
     }
 
     @Override
