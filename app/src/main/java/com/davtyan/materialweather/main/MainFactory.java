@@ -1,10 +1,15 @@
 package com.davtyan.materialweather.main;
 
+import android.content.Context;
+
 import com.davtyan.materialweather.api.WeatherApi;
+import com.davtyan.materialweather.api.WeatherCache;
 import com.davtyan.materialweather.main.daily.DailyForecastAdapter;
 import com.davtyan.materialweather.utils.WebClient;
+import com.google.gson.Gson;
 
 public class MainFactory {
+    private final Context context;
     private final MainMvp.View view;
     private final String location;
     private WebClient webClient;
@@ -12,8 +17,11 @@ public class MainFactory {
     private MainMvp.Presenter presenter;
     private WeatherApi weatherApi;
     private DailyForecastAdapter dailyForecastAdapter;
+    private Gson gson;
+    private WeatherCache weatherCache;
 
-    public MainFactory(MainMvp.View view, String location) {
+    public MainFactory(Context context, MainMvp.View view, String location) {
+        this.context = context;
         this.view = view;
         this.location = location;
     }
@@ -38,8 +46,20 @@ public class MainFactory {
 
     public WeatherApi getWeatherApi() {
         if (weatherApi == null)
-            weatherApi = new WeatherApi(getWebClient());
+            weatherApi = new WeatherApi(getWebClient(), getWeatherCache());
         return weatherApi;
+    }
+
+    public WeatherCache getWeatherCache() {
+        if (weatherCache == null)
+            weatherCache = new WeatherCache(context, getGson());
+        return weatherCache;
+    }
+
+    public Gson getGson() {
+        if (gson == null)
+            gson = new Gson();
+        return gson;
     }
 
     public DailyForecastAdapter getDailyForecastAdapter() {
