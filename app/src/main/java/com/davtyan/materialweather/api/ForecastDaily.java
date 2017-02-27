@@ -3,7 +3,8 @@ package com.davtyan.materialweather.api;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class ForecastDaily {
     long date;
     String icon;
