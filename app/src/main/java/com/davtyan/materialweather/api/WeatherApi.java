@@ -16,16 +16,13 @@ public class WeatherApi {
     }
 
     public Forecast getForecast(String location) {
-        if (cache.isOutdated()) {
-            String url = "https://material-weather.herokuapp.com/" + location;
-            byte[] forecastBytes = webClient.getBytes(url);
-            String forecastString = new String(forecastBytes);
-            Forecast forecast = gson.fromJson(forecastString, Forecast.class);
-            cache.save(forecast);
-            return forecast;
-        } else {
-            return cache.get();
-        }
+        if (!cache.isOutdated()) return cache.get();
+
+        String url = "https://material-weather.herokuapp.com/" + location;
+        String forecastString = new String(webClient.getBytes(url));
+        Forecast forecast = gson.fromJson(forecastString, Forecast.class);
+        cache.save(forecast);
+        return forecast;
     }
 
     public Forecast getForecastFromCache() {
