@@ -29,6 +29,9 @@ repositories {
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    dataBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.davtyan.materialweather"
         minSdkVersion 16
