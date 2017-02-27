@@ -59,4 +59,8 @@ public class WeatherCache {
         boolean isOutdated = (dateNowHours - dateCacheHours) > HOURS_UNTIL_OUTDATED;
         return isOutdated;
     }
+
+    public long getLastUpdateTime() {
+        return cacheFile.lastModified();
+    }
 }

@@ -26,6 +26,14 @@
                 app:titleTextColor="@color/textColorContrastPrimary"
                 />
 
+            <TextView
+                android:id="@+id/updateStatus"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/space_tiny"
+                android:text="@string/update_never"
+                style="@style/Text.Contrast.Small"
+                />
+
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.widget.NestedScrollView

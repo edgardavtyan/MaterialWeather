@@ -28,6 +28,11 @@ public class MainModel implements MainMvp.Model {
     }
 
     @Override
+    public long getLastUpdateTime() {
+        return weatherApi.getLastUpdateTime();
+    }
+
+    @Override
     public void forceRefresh() {
         new TodayWeatherTask(weatherApi, onWeatherLoadedListener).execute(location);
     }

@@ -18,10 +18,10 @@
 
     <style name="Text.Contrast">
         <item name="android:textColor">@color/textColorContrastPrimary</item>
-        <item name="android:shadowColor">@color/textColorPrimary</item>
-        <item name="android:shadowRadius">4</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
+    </style>
+
+    <style name="Text.Contrast.Small">
+        <item name="android:textSize">@dimen/font_small</item>
     </style>
 
     <style name="Text.Contrast.Light">

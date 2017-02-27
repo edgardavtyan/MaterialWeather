@@ -11,4 +11,7 @@
 
     <string name="credit.darksky">Forecast data powered by <a href="https://darksky.net/poweredby/">DarkSky</a></string>
     <string name="credit.meteocons">Weather icons are <a href="http://www.alessioatzeni.com/meteocons/">Meteocons</a> by Alessio Atzeni</string>
+
+    <string name="update_last">Last updated: %s</string>
+    <string name="update_never">Last updated: never</string>
 </resources>

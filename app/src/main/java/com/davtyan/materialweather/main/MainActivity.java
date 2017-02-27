@@ -73,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     }
 
     @Override
+    public void setLastUpdateTime(long time) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E dd/MM HH:mm");
+        String dateString = dateFormat.format(new Date(time));
+        views.updateStatus.setText(getString(R.string.update_last, dateString));
+    }
+
+    @Override
     public void updateLists() {
         dailyForecastAdapter.notifyDataSetChangedNonFinal();
     }

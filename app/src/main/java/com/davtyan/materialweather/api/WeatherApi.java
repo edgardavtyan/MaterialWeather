@@ -30,4 +30,8 @@ public class WeatherApi {
     public Forecast getForecastFromCache() {
         return cache.get();
     }
+
+    public long getLastUpdateTime() {
+        return cache.getLastUpdateTime();
+    }
 }

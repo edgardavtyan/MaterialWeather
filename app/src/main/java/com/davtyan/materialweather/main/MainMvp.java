@@ -11,12 +11,14 @@ public interface MainMvp {
 
         void setOnWeatherLoadedListener(OnWeatherLoadedListener listener);
         void getTodayWeather();
+        long getLastUpdateTime();
         void forceRefresh();
     }
 
     interface View {
         void setLocation(String location);
         void setDailySummary(String summary);
+        void setLastUpdateTime(long time);
         void updateLists();
         void setCurrentCondition(String condition, String icon);
         void setCurrentTemp(double temp);

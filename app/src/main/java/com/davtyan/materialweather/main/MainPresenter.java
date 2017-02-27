@@ -51,6 +51,7 @@ public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeather
         this.forecast = forecast;
 
         view.updateLists();
+        view.setLastUpdateTime(model.getLastUpdateTime());
         view.setCurrentTemp(forecast.getTemperature());
         view.setCurrentCondition(forecast.getCondition(), forecast.getIcon());
         view.setLocation(forecast.getLocation());
