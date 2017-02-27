@@ -4,7 +4,6 @@ import com.davtyan.materialweather.utils.WebClient;
 import com.google.gson.Gson;
 
 public class WeatherApi {
-    private static final String URL = "https://material-weather.herokuapp.com";
 
     private final WebClient webClient;
     private final Gson gson;
@@ -15,7 +14,8 @@ public class WeatherApi {
     }
 
     public Forecast getForecast(String location) {
-        byte[] forecastBytes = webClient.getBytes(URL);
+        String url = "https://material-weather.herokuapp.com/" + location;
+        byte[] forecastBytes = webClient.getBytes(url);
         String forecastString = new String(forecastBytes);
         Forecast forecast = gson.fromJson(forecastString, Forecast.class);
         return forecast;
