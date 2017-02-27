@@ -84,7 +84,7 @@ public class MainPresenterTest extends BaseTest {
 
         verify(holder).setDate(1l);
         verify(holder).setTemps(4.5, 3.4);
-        verify(holder).setPrecipitationChance(5.6);
+        verify(holder).setPrecipChance(5.6);
         verify(holder).setWindSpeed(6.7);
         verify(holder).setConditionIcon("icon");
     }
@@ -112,7 +112,7 @@ public class MainPresenterTest extends BaseTest {
         verify(view, timeout(1000)).setCurrentDate(2l);
         verify(view, timeout(1000)).setCurrentLowTemp(4.4);
         verify(view, timeout(1000)).setCurrentHighTemp(5.5);
-        verify(view, timeout(1000)).setCurrentPrecipitationChance(6);
+        verify(view, timeout(1000)).setCurrentPrecipChance(6);
         verify(view, timeout(1000)).setCurrentSummary("description");
     }
 }

@@ -63,16 +63,6 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     }
 
     @Override
-    public void setCurrentTemp(double temp) {
-        views.current.temp.setText(getString(R.string.pattern_temp_unit, temp));
-    }
-
-    @Override
-    public void setCurrentCondition(String condition, String icon) {
-        views.current.condition.setText(condition);
-    }
-
-    @Override
     public void setLocation(String location) {
         views.toolbar.setTitle(location);
     }
@@ -85,6 +75,16 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     @Override
     public void updateLists() {
         dailyForecastAdapter.notifyDataSetChangedNonFinal();
+    }
+
+    @Override
+    public void setCurrentCondition(String condition, String icon) {
+        views.current.condition.setText(condition);
+    }
+
+    @Override
+    public void setCurrentTemp(double temp) {
+        views.current.temp.setText(getString(R.string.pattern_temp_unit, temp));
     }
 
     @Override
@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity implements MainMvp.View {
     }
 
     @Override
-    public void setCurrentPrecipitationChance(double precipitationChance) {
-        views.current.precipChance.setText(getString(R.string.pattern_precipitation, (int) (precipitationChance * 100)));
+    public void setCurrentPrecipChance(double precipChance) {
+        views.current.precipChance.setText(getString(R.string.pattern_precip, (int) (precipChance * 100)));
     }
 
     @Override

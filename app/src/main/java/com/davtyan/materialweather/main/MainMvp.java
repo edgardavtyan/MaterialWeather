@@ -15,16 +15,16 @@ public interface MainMvp {
     }
 
     interface View {
-        void setCurrentTemp(double temp);
-        void setCurrentCondition(String condition, String icon);
         void setLocation(String location);
         void setDailySummary(String summary);
         void updateLists();
+        void setCurrentCondition(String condition, String icon);
+        void setCurrentTemp(double temp);
         void setCurrentWindSpeed(double windSpeed);
         void setCurrentDate(long date);
         void setCurrentLowTemp(double lowTemp);
         void setCurrentHighTemp(double highTemp);
-        void setCurrentPrecipitationChance(double precipitationChance);
+        void setCurrentPrecipChance(double precipitationChance);
         void setCurrentSummary(String summary);
         void setCurrentIcon(String icon);
     }

@@ -28,8 +28,8 @@ public class DailyForecastViewHolder extends RecyclerView.ViewHolder {
         views.date.setText(simpleDateFormat.format(date));
     }
 
-    public void setPrecipitationChance(double chance) {
-        views.precipChance.setText(context.getString(R.string.pattern_precipitation, (int) (chance * 100)));
+    public void setPrecipChance(double chance) {
+        views.precipChance.setText(context.getString(R.string.pattern_precip, (int) (chance * 100)));
     }
 
     public void setWindSpeed(double windSpeed) {

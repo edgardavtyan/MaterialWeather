@@ -30,7 +30,7 @@ public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeather
     public void onBindDailyHolder(DailyForecastViewHolder holder, int position) {
         ForecastDaily dailyForecast = forecast.getDaily().get(position);
         holder.setDate(dailyForecast.getDate());
-        holder.setPrecipitationChance(dailyForecast.getPrecipProbability());
+        holder.setPrecipChance(dailyForecast.getPrecipProbability());
         holder.setTemps(dailyForecast.getTemperatureMin(), dailyForecast.getTemperatureMax());
         holder.setWindSpeed(dailyForecast.getWindSpeed());
         holder.setConditionIcon(dailyForecast.getIcon());
@@ -51,17 +51,15 @@ public class MainPresenter implements MainMvp.Presenter, MainMvp.Model.OnWeather
         this.forecast = forecast;
 
         view.updateLists();
-
         view.setCurrentTemp(forecast.getTemperature());
         view.setCurrentCondition(forecast.getCondition(), forecast.getIcon());
         view.setLocation(forecast.getLocation());
         view.setDailySummary(forecast.getDailySummary());
-
         view.setCurrentWindSpeed(forecast.getWindSpeed());
         view.setCurrentDate(forecast.getDate());
         view.setCurrentLowTemp(forecast.getTemperatureMin());
         view.setCurrentHighTemp(forecast.getTemperatureMax());
-        view.setCurrentPrecipitationChance(forecast.getPrecipChance());
+        view.setCurrentPrecipChance(forecast.getPrecipChance());
         view.setCurrentSummary(forecast.getTodaySummary());
         view.setCurrentIcon(forecast.getIcon());
     }

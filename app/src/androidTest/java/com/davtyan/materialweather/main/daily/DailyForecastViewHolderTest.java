@@ -42,7 +42,7 @@ public class DailyForecastViewHolderTest extends BaseTest {
     @Test
     public void set_precipitation_chance() {
         TextView precipitationChanceView = (TextView) itemView.findViewById(R.id.precipitation_chance);
-        holder.setPrecipitationChance(0.12);
+        holder.setPrecipChance(0.12);
         assertThat(precipitationChanceView.getText()).isEqualTo("12%");
     }
 
